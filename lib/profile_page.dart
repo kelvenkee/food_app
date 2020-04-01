@@ -29,19 +29,6 @@ class ProfilePage extends StatelessWidget {
             )));
   }
 
-  Widget _buildFullName() {
-    TextStyle _nameTextStyle = TextStyle(
-      fontFamily: 'Roboto',
-      color: Colors.black87,
-      fontSize: 28.0,
-      fontWeight: FontWeight.w600,
-    );
-    return Text(
-      _fullName,
-      style: _nameTextStyle,
-    );
-  }
-
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
@@ -53,6 +40,11 @@ class ProfilePage extends StatelessWidget {
             'User Profile',
             style: TextStyle(color: Colors.black),
           ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.black,
+            onPressed: () => Navigator.pop(context),
+          ),
         ),
         body: Stack(
           children: <Widget>[
@@ -63,7 +55,36 @@ class ProfilePage extends StatelessWidget {
                 children: <Widget>[
                   SizedBox(height: screenSize.height / 6.4),
                   _buildProfileImage(),
-                  _buildFullName(),
+                  Card(
+                      color: Colors.white,
+                      margin: EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 25.0),
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.verified_user,
+                          color: Colors.teal[900],
+                        ),
+                        title: Text(
+                          _fullName,
+                          style: TextStyle(
+                              fontFamily: 'BalooBhai', fontSize: 20.0),
+                        ),
+                      )),
+                  Card(
+                      color: Colors.white,
+                      margin: EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 25.0),
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.phone,
+                          color: Colors.teal[900],
+                        ),
+                        title: Text(
+                          '+91 85465XXX8XX',
+                          style: TextStyle(
+                              fontFamily: 'BalooBhai', fontSize: 20.0),
+                        ),
+                      )),
                 ],
               ),
             ))

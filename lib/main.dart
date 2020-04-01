@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:food_app/login.dart';
 import 'package:splashscreen/splashscreen.dart';
 
-void main(){
+void main() {
   runApp(new MaterialApp(
     debugShowCheckedModeBanner: false,
-    home:new FoodApp(),
+    home: new FoodApp(),
   ));
 }
 
-
-class FoodApp extends StatefulWidget{
+class FoodApp extends StatefulWidget {
   _FoodAppState createState() => _FoodAppState();
 }
 
-class _FoodAppState extends State <FoodApp>{
-  Widget build(BuildContext context){
+class _FoodAppState extends State<FoodApp> {
+  Widget build(BuildContext context) {
     return SplashScreen(
       seconds: 5,
       backgroundColor: Colors.white,
