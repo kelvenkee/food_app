@@ -1,74 +1,79 @@
 import 'package:flutter/material.dart';
+import './login_page.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
+class Login extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    final appTitle = 'Form Validation Demo';
-
-    return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(appTitle),
-        ),
-        body: MyCustomForm(),
-      ),
-    );
-  }
+  _LoginState createState() => _LoginState();
 }
 
-// Create a Form widget.
-class MyCustomForm extends StatefulWidget {
-  @override
-  MyCustomFormState createState() {
-    return MyCustomFormState();
-  }
-}
-
-// Create a corresponding State class.
-// This class holds data related to the form.
-class MyCustomFormState extends State<MyCustomForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
-  final _formKey = GlobalKey<FormState>();
-
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          TextFormField(
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: RaisedButton(
-              onPressed: () {
-                // Validate returns true if the form is valid, or false
-                // otherwise.
-                if (_formKey.currentState.validate()) {
-                  // If the form is valid, display a Snackbar.
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing Data')));
-                }
-              },
-              child: Text('Submit'),
+    return Scaffold(
+      body: Builder(
+        builder: (context) => ListView(
+          padding: EdgeInsets.symmetric(horizontal: 18.0),
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 120,
+                ),
+                Icon(
+                  Icons.fastfood,
+                  color: Colors.black,
+                  size: 80.0,
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  'Welcome To Food Ring',
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                    padding: const EdgeInsets.all(16.0),
+                    color: Colors.white,
+                    child: Text(
+                      "Food Bangers",
+                      style: TextStyle(color: Colors.pink[400]),
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                    padding: const EdgeInsets.all(16.0),
+                    color: Colors.white,
+                    child: Text(
+                      "Food Bangers",
+                      style: TextStyle(color: Colors.pink[100]),
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return LoginPage();
+                      }));
+                    },
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
