@@ -32,63 +32,79 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(
-          elevation: 10.0,
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          title: Text(
-            'User Profile',
-            style: TextStyle(color: Colors.black),
-          ),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            color: Colors.black,
-            onPressed: () => Navigator.pop(context),
-          ),
+      appBar: AppBar(
+        elevation: 10.0,
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        title: Text(
+          'User Profile',
+          style: TextStyle(color: Colors.black),
         ),
-        body: Stack(
-          children: <Widget>[
-            _buildCoverImage(screenSize),
-            SafeArea(
-                child: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: screenSize.height / 6.4),
-                  _buildProfileImage(),
-                  Card(
-                      color: Colors.white,
-                      margin: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 25.0),
-                      child: ListTile(
-                        leading: Icon(
-                          Icons.verified_user,
-                          color: Colors.teal[900],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.black,
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+      body: Stack(
+        children: <Widget>[
+          _buildCoverImage(screenSize),
+          SafeArea(
+              child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: screenSize.height / 6.4),
+                _buildProfileImage(),
+                Card(
+                    color: Colors.white,
+                    margin:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.person,
+                        color: Colors.teal[900],
+                      ),
+                      title: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: _fullName,
+                          hintStyle: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        title: Text(
-                          _fullName,
-                          style: TextStyle(
-                              fontFamily: 'BalooBhai', fontSize: 20.0),
+                        onSaved: (String value) {
+                          // This optional block of code can be used to run
+                          // code when the user saves the form.
+                        },
+                      ),
+                    )),
+                Card(
+                    color: Colors.white,
+                    margin:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.phone,
+                        color: Colors.teal[900],
+                      ),
+                      title: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: '012-3454245',
+                          hintStyle: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                      )),
-                  Card(
-                      color: Colors.white,
-                      margin: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 25.0),
-                      child: ListTile(
-                        leading: Icon(
-                          Icons.phone,
-                          color: Colors.teal[900],
-                        ),
-                        title: Text(
-                          '+91 85465XXX8XX',
-                          style: TextStyle(
-                              fontFamily: 'BalooBhai', fontSize: 20.0),
-                        ),
-                      )),
-                ],
-              ),
-            ))
-          ],
-        ));
+                        onSaved: (String value) {
+                          // This optional block of code can be used to run
+                          // code when the user saves the form.
+                        },
+                      ),
+                    )),
+                ListTile(
+                    title: RaisedButton(
+                  child: Text('Save Changes'),
+                  onPressed: () {},
+                ))
+              ],
+            ),
+          ))
+        ],
+      ),
+    );
   }
 }
