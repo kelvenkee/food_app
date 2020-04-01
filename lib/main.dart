@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Food Application',
+      debugShowCheckedModeBanner: false,
       home: Login(),
     );
   }

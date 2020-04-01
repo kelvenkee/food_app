@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './profile_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -86,6 +87,11 @@ class _LoginPageState extends State<LoginPage> {
                           bool result = _performLogin();
                           if (result) {
                             print("login success");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProfilePage()),
+                            );
                           } else {
                             Scaffold.of(context).showSnackBar(new SnackBar(
                               elevation: 0,
