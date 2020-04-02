@@ -3,7 +3,6 @@ import 'profile_page.dart';
 import 'main.dart';
 import 'setting_password.dart';
 
-
 class SettingPage extends StatelessWidget {
   static final String path = "lib\setting.dart";
   @override
@@ -70,7 +69,8 @@ class SettingPage extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SettingPasswordPage()),
+                        MaterialPageRoute(
+                            builder: (context) => SettingPasswordPage()),
                       );
                     },
                   ),
@@ -90,7 +90,9 @@ class SettingPage extends StatelessWidget {
                     "Order Updates",
                     style: TextStyle(color: Colors.black),
                   ),
-                  onChanged: (val) {},
+                  onChanged: (val) {
+                    print(val);
+                  },
                 )
               ])),
       floatingActionButton: FloatingActionButton.extended(
