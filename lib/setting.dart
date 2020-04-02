@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'profile_page.dart';
 import 'main.dart';
+import 'setting_password.dart';
+
 
 class SettingPage extends StatelessWidget {
   static final String path = "lib\setting.dart";
@@ -68,7 +70,7 @@ class SettingPage extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ProfilePage()),
+                        MaterialPageRoute(builder: (context) => SettingPasswordPage()),
                       );
                     },
                   ),
@@ -80,19 +82,16 @@ class SettingPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.indigo,
                     )),
-                Card(
-                  child: ListTile(
-                      trailing: SwitchListTile(
-                    value: true,
-                    activeColor: Colors.blue,
-                    contentPadding: const EdgeInsets.all(0),
-                    title: Text(
-                      "Order Updates",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    onChanged: (val) {},
-                  )),
-                ),
+                SwitchListTile(
+                  value: true,
+                  activeColor: Colors.blue,
+                  contentPadding: const EdgeInsets.all(0),
+                  title: Text(
+                    "Order Updates",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onChanged: (val) {},
+                )
               ])),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Colors.grey,
