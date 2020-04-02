@@ -15,6 +15,10 @@ class FoodApp extends StatefulWidget {
 
 class _FoodAppState extends State<FoodApp> {
   Widget build(BuildContext context) {
+    return buildSplashScreen();
+  }
+
+  SplashScreen buildSplashScreen() {
     return SplashScreen(
       seconds: 5,
       backgroundColor: Colors.white,
@@ -30,6 +34,10 @@ class _FoodAppState extends State<FoodApp> {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return buildMaterialApp();
+  }
+
+  MaterialApp buildMaterialApp() {
     return MaterialApp(
       title: 'Food Application',
       debugShowCheckedModeBanner: false,

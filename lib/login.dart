@@ -14,66 +14,90 @@ class _LoginState extends State<Login> {
         builder: (context) => ListView(
           padding: EdgeInsets.symmetric(horizontal: 18.0),
           children: <Widget>[
-            Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 120,
-                ),
-                Icon(
-                  Icons.fastfood,
-                  color: Colors.black,
-                  size: 80.0,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  'Welcome To Food Ring',
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
-                    padding: const EdgeInsets.all(16.0),
-                    color: Colors.white,
-                    child: Text(
-                      "Food Bangers",
-                      style: TextStyle(color: Colors.pink[400]),
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
-                    padding: const EdgeInsets.all(16.0),
-                    color: Colors.white,
-                    child: Text(
-                      "Food Bangers",
-                      style: TextStyle(color: Colors.pink[100]),
-                    ),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (BuildContext context) {
-                        return LoginPage();
-                      }));
-                    },
-                  ),
-                ),
-              ],
-            ),
+            buildColumn(context),
           ],
         ),
+      ),
+    );
+  }
+
+  Column buildColumn(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        SizedBox(
+          height: 120,
+        ),
+        Icon(
+          Icons.fastfood,
+          color: Colors.black,
+          size: 80.0,
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        Text(
+          'Welcome To Food Ring',
+          style: TextStyle(fontSize: 20),
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        _Customers(),
+        SizedBox(
+          height: 25,
+        ),
+        _Employee(),
+      ],
+    );
+  }
+}
+
+class _Employee extends StatelessWidget {
+  const _Employee({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+        padding: const EdgeInsets.all(16.0),
+        color: Colors.white,
+        child: Text(
+          "Employee",
+          style: TextStyle(color: Colors.pink[400]),
+        ),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext context) {
+            return LoginPage();
+          }));
+        },
+      ),
+    );
+  }
+}
+
+class _Customers extends StatelessWidget {
+  const _Customers({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+        padding: const EdgeInsets.all(16.0),
+        color: Colors.white,
+        child: Text(
+          "Customers",
+          style: TextStyle(color: Colors.pink[400]),
+        ),
+        onPressed: () {},
       ),
     );
   }
