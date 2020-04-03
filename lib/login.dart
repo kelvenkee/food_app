@@ -27,11 +27,7 @@ class _LoginState extends State<Login> {
         SizedBox(
           height: 120,
         ),
-        Icon(
-          Icons.fastfood,
-          color: Colors.black,
-          size: 80.0,
-        ),
+        Image.asset('assets/foodlogo.png', scale: 1.2),
         SizedBox(
           height: 30,
         ),

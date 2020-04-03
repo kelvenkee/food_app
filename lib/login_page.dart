@@ -25,13 +25,9 @@ class _LoginPageState extends State<LoginPage> {
           Column(
             children: <Widget>[
               SizedBox(
-                height: 120,
+                height: 50,
               ),
-              Icon(
-                Icons.fastfood,
-                color: Colors.black,
-                size: 80.0,
-              ),
+              Image.asset('assets/foodlogo.png', scale: 1.2),
               SizedBox(
                 height: 30,
               ),
