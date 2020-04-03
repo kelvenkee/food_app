@@ -3,8 +3,9 @@ import 'package:food_app/help_page.dart';
 import 'package:food_app/login.dart';
 import 'profile_page.dart';
 import 'setting.dart';
-import 'main.dart';
-import 'setting_password.dart';
+import 'edit_menu.dart';
+import 'view_order.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 
 class AdminPage extends StatelessWidget{
   Widget build(BuildContext context){
@@ -97,6 +98,131 @@ class AdminPage extends StatelessWidget{
             ),
           ),
         ],)
+      ),
+
+      body: ListView(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 1.0, left: 1.0),
+            child: ListTile(
+              title: Text('Menu', style: TextStyle(color: Colors.black, fontWeight:FontWeight.bold,fontSize: 22.0)),
+              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blueGrey),
+              onTap: (){
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => EditMenu()),
+              );
+              },
+            )
+          ),
+          Container(
+            height: 225.0,
+            child: Carousel(
+              overlayShadow: false,
+              borderRadius: true,
+              boxFit: BoxFit.cover,
+              autoplay: true, 
+              dotSize: 5.0,
+              indicatorBgPadding: 9.0,
+              images: [
+                new AssetImage('assets/slider/slider1.jpg'),
+                new AssetImage('assets/slider/slider2.jpg'),
+                new AssetImage('assets/slider/slider3.jpg'),
+                new AssetImage('assets/slider/slider4.jpg'),
+                new AssetImage('assets/slider/slider5.jpg'),
+              ],
+              animationCurve: Curves.fastOutSlowIn,
+              animationDuration: Duration(microseconds: 1500),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 1.0, left: 1.0),
+            child: ListTile(
+              title: Text('Orders', style: TextStyle(color: Colors.black, fontWeight:FontWeight.bold,fontSize: 22.0)),
+              trailing: Text('View All', style: TextStyle(color: Colors.blueGrey, fontWeight:FontWeight.bold,fontSize: 12.0)),
+              onTap: (){
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ViewOrder()),
+              );
+              },
+            )
+          ),
+          Row(
+            
+            children: <Widget>[
+              new Expanded(
+                child: Container(
+                  height: 140,
+                  child: new Column(
+                    children: <Widget>[
+                      new Container(
+                        height: 100,
+                        decoration: new BoxDecoration(
+                          borderRadius: new BorderRadius.circular(5.0),
+                          image: new DecorationImage(
+                            image: AssetImage("assets/table1.png"),
+                            fit: BoxFit.cover
+                          )
+                        ),
+                        
+                      ),
+                      new Text("Table 1", style: new TextStyle(fontSize:16.0), textAlign: TextAlign.center,)
+                    ]
+                  ),
+                )
+              ),
+              new SizedBox(width:5.0),
+              new Expanded(
+                child: Container(
+                  height: 140,
+                  child: new Column(
+                    children: <Widget>[
+                      new Container(
+                       
+                        height: 100,
+                        decoration: new BoxDecoration(
+                          borderRadius: new BorderRadius.circular(5.0),
+                          image: new DecorationImage(
+                            image: AssetImage("assets/table2.png" ),
+                            fit: BoxFit.cover
+                          )
+                        ),
+                        
+                      ),
+                      new Text("Table 2", style: new TextStyle(fontSize:16.0),textAlign: TextAlign.center)
+                    ]
+                  ),
+                )
+              ),
+              new SizedBox(width:5.0),
+              new Expanded(
+                child: Container(
+                  height: 140,
+                  child: new Column(
+                    children: <Widget>[
+                      new Container(
+                        height: 100,
+                        decoration: new BoxDecoration(
+                          borderRadius: new BorderRadius.circular(5.0),
+                          image: new DecorationImage(
+                            image: AssetImage("assets/table3.png"),
+                            fit: BoxFit.cover
+                          )
+                        ),
+                        
+                      ),
+                      new Text("Table 3", style: new TextStyle(fontSize:16.0),textAlign: TextAlign.center)
+                    ]
+                  ),
+                )
+              ),
+
+
+            ],
+          ),
+
+
+
+        ],
       ),
 
     );
