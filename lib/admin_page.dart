@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/help_page.dart';
 import 'package:food_app/login.dart';
 import 'profile_page.dart';
 import 'setting.dart';
@@ -74,7 +75,11 @@ class AdminPage extends StatelessWidget{
             ),
           ),
           InkWell(
-            onTap: (){},
+            onTap: (){
+              Navigator.push(context,
+              MaterialPageRoute(builder: (context) => HelpPage()),
+              );
+            },
             child: ListTile(
               title: Text('Help', style: TextStyle(color:Colors.black)),
               leading: Icon(Icons.help_outline, color: Colors.black),
