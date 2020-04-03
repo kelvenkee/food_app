@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'setting.dart';
+// import 'setting.dart';
+import 'admin_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -82,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
               print("login success");
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SettingPage()),
+                MaterialPageRoute(builder: (context) => AdminPage()),
               );
             } else {
               Scaffold.of(context).showSnackBar(new SnackBar(

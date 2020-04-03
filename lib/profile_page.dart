@@ -6,7 +6,7 @@ class ProfilePage extends StatelessWidget {
     return Container(
       height: screenSize.height / 2.6,
       decoration: BoxDecoration(
-        color: Colors.tealAccent,
+        color: Colors.indigo,
       ),
     );
   }
