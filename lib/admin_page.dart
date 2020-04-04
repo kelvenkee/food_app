@@ -15,13 +15,7 @@ class AdminPage extends StatelessWidget{
         centerTitle: true,
         title: Text('FoodRing'),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.notifications, color: Colors.white,),
-          onPressed: null,
-          ),
-          // IconButton(icon: Icon(Icons.exit_to_app, color: Colors.white),
-          // onPressed:null,
-          
-          // ),
+          ShowNotification(),          
         ],
       ),
 
@@ -226,5 +220,39 @@ class AdminPage extends StatelessWidget{
       ),
 
     );
+}
+}
+
+
+class ShowNotification extends StatelessWidget{
+  Widget build(BuildContext context){
+    return (
+          IconButton(
+            onPressed: (){
+              Scaffold.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("New order from Table 3, please check."),
+                  duration: Duration(seconds: 3),
+                  backgroundColor: Colors.red[600],
+                )
+              );
+            },          
+            icon: Stack(
+              children: <Widget>[
+                Icon(
+                  Icons.notifications,
+                  color: Colors.white),
+                  Positioned(
+                    left: 16.0,
+                    child: Icon(Icons.brightness_1,
+                    color: Colors.red,
+                    size: 9.0,
+                    
+                    ))
+              ],
+            )
+          )
+    );  
+
   }
 }
