@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'profile_page.dart';
-import 'main.dart';
+import '../main.dart';
 import 'setting_password.dart';
 
 class SettingPage extends StatelessWidget {
@@ -9,6 +9,7 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           'Setting',
           style: TextStyle(color: Colors.black),

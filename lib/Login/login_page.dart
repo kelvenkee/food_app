@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'setting.dart';
-import 'admin_page.dart';
+import '../Menu/admin_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
           Column(
             children: <Widget>[
               SizedBox(
-                height: 50,
+                height: 120,
               ),
               Image.asset('assets/foodlogo.png', scale: 1.2),
               SizedBox(

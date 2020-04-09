@@ -85,7 +85,6 @@ class SettingPasswordPage extends StatelessWidget {
                         },
                       ),
                     )),
-                
                 Padding(
                   padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                   child: Text(
@@ -94,7 +93,6 @@ class SettingPasswordPage extends StatelessWidget {
                         color: Colors.grey, fontStyle: FontStyle.italic),
                   ),
                 ),
-                
                 ListTile(
                     title: RaisedButton(
                   child: Text('Save Changes'),
