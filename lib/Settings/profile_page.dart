@@ -6,8 +6,7 @@ class ProfilePage extends StatelessWidget {
     return Container(
       height: screenSize.height / 2.6,
       decoration: BoxDecoration(
-        color: Colors.indigo,
-      ),
+gradient: LinearGradient(begin: Alignment.topLeft, end:Alignment.bottomRight,colors:[Colors.orange[300],Colors.deepOrangeAccent])      ),
     );
   }
 
@@ -18,7 +17,7 @@ class ProfilePage extends StatelessWidget {
             height: 140.0,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/android.png'),
+                image: AssetImage('assets/profile.png'),
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(80.0),

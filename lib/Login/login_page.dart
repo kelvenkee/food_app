@@ -73,7 +73,8 @@ class _LoginPageState extends State<LoginPage> {
   ButtonTheme validator(BuildContext context) {
     return ButtonTheme(
       height: 50,
-      disabledColor: Colors.blueAccent,
+      buttonColor: Colors.redAccent[400],
+      disabledColor: Colors.deepOrangeAccent,
       child: RaisedButton(
         onPressed: () {
           if (_formKey.currentState.validate()) {
@@ -99,6 +100,7 @@ class _LoginPageState extends State<LoginPage> {
         },
         child:
             Text('Login', style: TextStyle(fontSize: 20, color: Colors.white)),
+            
       ),
     );
   }
