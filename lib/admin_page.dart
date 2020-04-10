@@ -9,9 +9,11 @@ import 'package:carousel_pro/carousel_pro.dart';
 
 class AdminPage extends StatelessWidget{
   Widget build(BuildContext context){
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigo,
+        
+        backgroundColor: Colors.deepOrangeAccent,
         centerTitle: true,
         title: Text('FoodRing'),
         actions: <Widget>[
@@ -28,11 +30,13 @@ class AdminPage extends StatelessWidget{
               child: CircleAvatar(
                 backgroundColor:  Colors.white,
                 // child: Icon(Icons.android, size: 60.0, color: Colors.black),
-                backgroundImage: AssetImage('assets/android.png'),
+                backgroundImage: AssetImage('assets/profile.png'),
                 
               )
             ),
-            decoration: BoxDecoration(color: Colors.indigo),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(begin: Alignment.topLeft, end:Alignment.bottomRight,colors:[Colors.orange[300],Colors.deepOrangeAccent])
+            ),
           ),
           InkWell(
             onTap: (){
@@ -140,6 +144,7 @@ class AdminPage extends StatelessWidget{
               },
             )
           ),
+          // horizontalList1,
           Row(
             
             children: <Widget>[
@@ -153,13 +158,19 @@ class AdminPage extends StatelessWidget{
                         decoration: new BoxDecoration(
                           borderRadius: new BorderRadius.circular(5.0),
                           image: new DecorationImage(
-                            image: AssetImage("assets/table1.png"),
+                            image: AssetImage("assets/tableW.jpg"),
                             fit: BoxFit.cover
                           )
                         ),
-                        
                       ),
-                      new Text("Table 1", style: new TextStyle(fontSize:16.0), textAlign: TextAlign.center,)
+                      InkWell(
+                        onTap:(){
+                          Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => ViewOrder()),
+                        );
+                        },
+                        child: new Text("Table 1", style: new TextStyle(fontSize:16.0), textAlign: TextAlign.center,)
+                      ),
                     ]
                   ),
                 )
@@ -176,13 +187,20 @@ class AdminPage extends StatelessWidget{
                         decoration: new BoxDecoration(
                           borderRadius: new BorderRadius.circular(5.0),
                           image: new DecorationImage(
-                            image: AssetImage("assets/table2.png" ),
+                            image: AssetImage("assets/tableX.png" ),
                             fit: BoxFit.cover
                           )
                         ),
                         
                       ),
-                      new Text("Table 2", style: new TextStyle(fontSize:16.0),textAlign: TextAlign.center)
+                      InkWell(
+                        onTap:(){
+                          Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => ViewOrder()),
+                        );
+                        },
+                        child: new Text("Table 2", style: new TextStyle(fontSize:16.0), textAlign: TextAlign.center,)
+                      ),
                     ]
                   ),
                 )
@@ -198,13 +216,20 @@ class AdminPage extends StatelessWidget{
                         decoration: new BoxDecoration(
                           borderRadius: new BorderRadius.circular(5.0),
                           image: new DecorationImage(
-                            image: AssetImage("assets/table3.png"),
+                            image: AssetImage("assets/tableZ.jpg"),
                             fit: BoxFit.cover
                           )
                         ),
                         
                       ),
-                      new Text("Table 3", style: new TextStyle(fontSize:16.0),textAlign: TextAlign.center)
+                      InkWell(
+                        onTap:(){ 
+                          Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => ViewOrder()),
+                        );
+                        },
+                        child: new Text("Table 3", style: new TextStyle(fontSize:16.0), textAlign: TextAlign.center,)
+                      ),
                     ]
                   ),
                 )
@@ -212,10 +237,8 @@ class AdminPage extends StatelessWidget{
 
 
             ],
-          ),
-
-
-
+          ), //ROW
+          
         ],
       ),
 

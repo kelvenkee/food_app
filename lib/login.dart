@@ -63,7 +63,7 @@ class _Employee extends StatelessWidget {
         color: Colors.white,
         child: Text(
           "Employee",
-          style: TextStyle(color: Colors.pink[400]),
+          style: TextStyle(color: Colors.deepOrangeAccent[400]),
         ),
         onPressed: () {
           Navigator.push(context,
@@ -91,7 +91,7 @@ class _Customers extends StatelessWidget {
         color: Colors.white,
         child: Text(
           "Customers",
-          style: TextStyle(color: Colors.pink[400]),
+          style: TextStyle(color: Colors.deepOrangeAccent[400]),
         ),
         onPressed: () {},
       ),

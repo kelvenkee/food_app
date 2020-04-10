@@ -29,7 +29,7 @@ class SettingPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.indigo,
+                      color: Colors.deepOrangeAccent[400],
                     )),
                 Card(
                   child: ListTile(
@@ -38,7 +38,7 @@ class SettingPage extends StatelessWidget {
                       style: TextStyle(color: Colors.black),
                     ),
                     leading: CircleAvatar(
-                      backgroundImage: AssetImage('assets/android.png'),
+                      backgroundImage: AssetImage('assets/profile.png'),
                     ),
                     trailing: Icon(
                       Icons.edit,
@@ -80,7 +80,7 @@ class SettingPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.indigo,
+                      color: Colors.deepOrangeAccent[400],
                     )),
                 SwitchListTile(
                   value: true,
