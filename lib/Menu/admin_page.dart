@@ -6,6 +6,7 @@ import '../Settings/setting.dart';
 import '../Menu/view_menu.dart';
 import '../Menu/view_order.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:food_app/models/mockdata.dart';
 
 class AdminPage extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -115,7 +116,7 @@ class AdminPage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ViewMenu()),
+                    MaterialPageRoute(builder: (context) => ViewMenu(mockFoodItem)),
                   );
                 },
               )),

@@ -2,13 +2,15 @@ class FoodItem {
   String foodName;
   String foodDescription;
   double unitPrice;
-  int estimatedTime; //in minutes
 
-  FoodItem({this.foodName,this.foodDescription, this.unitPrice, this.estimatedTime});
+  String imageName;
+
+  FoodItem(
+      {this.foodName, this.foodDescription, this.unitPrice, this.imageName});
   FoodItem.copy(FoodItem from)
       : this(
             foodName: from.foodName,
-            foodDescription:from.foodDescription,
+            foodDescription: from.foodDescription,
             unitPrice: from.unitPrice,
-            estimatedTime: from.estimatedTime);
+            imageName: from.imageName);
 }

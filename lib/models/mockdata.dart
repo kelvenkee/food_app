@@ -10,70 +10,70 @@ List<FoodItem> mockFoodItem = [
       foodDescription:
           "Loads of delicious roasted chicken, shredded chicken juicy pineapples and fresh mushrooms on our brand new pizza.",
       unitPrice: 25.0,
-      estimatedTime: 20),
+      imageName: 'assets/fooditemsimage/fooditemsimage1.jpg'),
   FoodItem(
       //mockFoodItem[1]
       foodName: "Chicken Chop with Black Pepper Sauce",
       foodDescription:
           "Boneless chicken tenders perfectly marinated and battered, so every bite is crispy yet soft. Baked till golden and best paired with dill dipping sauce.",
       unitPrice: 12.50,
-      estimatedTime: 10),
+      imageName: 'assets/fooditemsimage/fooditemsimage2.jpg'),
   FoodItem(
       //mockFoodItem[2]
       foodName: "Fish Fillet Burger",
       foodDescription:
           "A classic favourite of a fish burger served with tartar sauce and cheddar cheese in a steamed bun.",
       unitPrice: 8.90,
-      estimatedTime: 5),
+      imageName: 'assets/fooditemsimage/fooditemsimage3.jpg'),
   FoodItem(
       //mockFoodItem[3]
       foodName: "Nasi Goreng Kampung",
       foodDescription:
           "A traditional Malay style fried rice, also known as Village style fried rice with the fragrant of spices and a hint of chilli.",
       unitPrice: 25.0,
-      estimatedTime: 10),
+      imageName: 'assets/fooditemsimage/fooditemsimage4.jpg'),
   FoodItem(
       //mockFoodItem[4]
       foodName: "Spicy Nacho Cheese Wedges",
       foodDescription:
           "Four Cheese Wedges filled with spicy Jalapeno slices, served with sour cream & chive dip.",
       unitPrice: 5.60,
-      estimatedTime: 8),
+      imageName: 'assets/fooditemsimage/fooditemsimage5.jpg'),
   FoodItem(
       //mockFoodItem[5]
       foodName: "Spaghetti With Chicken Bolognese",
       foodDescription:
           "Spaghetti with traditional mince chincken meat in a fresh tomato sauce.",
       unitPrice: 13.9,
-      estimatedTime: 8),
+      imageName: 'assets/fooditemsimage/fooditemsimage6.jpg'),
   FoodItem(
       //mockFoodItem[6]
       foodName: "Red Velvet Cake",
       foodDescription:
           "Cake that is fluffy, soft, buttery and moist with the most perfect velvet texture.",
       unitPrice: 9.90,
-      estimatedTime: 5),
+      imageName: 'assets/fooditemsimage/fooditemsimage7.jpg'),
   FoodItem(
       //mockFoodItem[7]
       foodName: "Honeydew Juice",
       foodDescription:
           "A fresh and fruity beverage made with sweet honeydew imported from Japan.",
       unitPrice: 8.80,
-      estimatedTime: 5),
+      imageName: 'assets/fooditemsimage/fooditemsimage8.jpg'),
   FoodItem(
       //mockFoodItem[8]
       foodName: "Milo Dinosaur",
       foodDescription:
           "A Malaysian beverage, composed of a cup of iced Milo with undissolved Milo powder added on top of it.",
       unitPrice: 25.0,
-      estimatedTime: 20),
+      imageName: 'assets/fooditemsimage/fooditemsimage9.jpg'),
   FoodItem(
       //mockFoodItem[9]
-      foodName: "Cendol",
+      foodName: "Cendol with Musang King Durian",
       foodDescription:
-          " Iced sweet dessert with droplets of green rice flour jelly, coconut milk and palm sugar syrup.",
+          "Iced sweet dessert with droplets of green rice flour jelly, coconut milk and palm sugar syrup. Comes together with Musang King Durian",
       unitPrice: 3.90,
-      estimatedTime: 5),
+      imageName: 'assets/fooditemsimage/fooditemsimage10.jpg'),
 ];
 
 List<Customer> mockCustomer = [

@@ -10,6 +10,7 @@ import 'package:food_app/Settings/setting.dart';
 import 'package:food_app/Settings/setting_password.dart';
 import 'package:food_app/constant.dart';
 import 'package:food_app/splashscreen.dart';
+import 'package:food_app/models/mockdata.dart';
 
 Route<dynamic> createRoute(settings) {
   switch (settings.name) {
@@ -22,7 +23,7 @@ Route<dynamic> createRoute(settings) {
     case admin_pageRoute:
       return MaterialPageRoute(builder: (context) => AdminPage());
     case view_menuRoute:
-      return MaterialPageRoute(builder: (context) => ViewMenu());
+      return MaterialPageRoute(builder: (context) => ViewMenu(mockFoodItem));
     case view_orderRoute:
       return MaterialPageRoute(builder: (context) => ViewOrder());
     case help_pageRoute:

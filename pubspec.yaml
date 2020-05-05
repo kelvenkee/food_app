@@ -55,6 +55,17 @@ flutter:
     - assets/tableW.jpg
     - assets/tableZ.jpg
     - assets/profile.png
+    - assets/fooditemsimage/fooditemsimage1.jpg
+    - assets/fooditemsimage/fooditemsimage2.jpg
+    - assets/fooditemsimage/fooditemsimage3.jpg
+    - assets/fooditemsimage/fooditemsimage4.jpg
+    - assets/fooditemsimage/fooditemsimage5.jpg
+    - assets/fooditemsimage/fooditemsimage6.jpg
+    - assets/fooditemsimage/fooditemsimage7.jpg
+    - assets/fooditemsimage/fooditemsimage8.jpg
+    - assets/fooditemsimage/fooditemsimage9.jpg
+    - assets/fooditemsimage/fooditemsimage10.jpg
+
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
