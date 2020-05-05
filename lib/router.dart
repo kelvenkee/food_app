@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_app/Login/login.dart';
 import 'package:food_app/Login/login_page.dart';
 import 'package:food_app/Menu/admin_page.dart';
-import 'package:food_app/Menu/edit_menu.dart';
+import 'package:food_app/Menu/view_menu.dart';
 import 'package:food_app/Menu/view_order.dart';
 import 'package:food_app/Settings/help_page.dart';
 import 'package:food_app/Settings/profile_page.dart';
@@ -21,8 +21,8 @@ Route<dynamic> createRoute(settings) {
       return MaterialPageRoute(builder: (context) => LoginPage());
     case admin_pageRoute:
       return MaterialPageRoute(builder: (context) => AdminPage());
-    case edit_menuRoute:
-      return MaterialPageRoute(builder: (context) => EditMenu());
+    case view_menuRoute:
+      return MaterialPageRoute(builder: (context) => ViewMenu());
     case view_orderRoute:
       return MaterialPageRoute(builder: (context) => ViewOrder());
     case help_pageRoute:
