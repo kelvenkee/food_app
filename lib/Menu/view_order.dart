@@ -1,74 +1,81 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ViewOrder extends StatelessWidget{
-  Widget build(BuildContext context){
+class ViewOrder extends StatefulWidget {
+  final List _table;
+  ViewOrder(this._table);
+  @override
+  _ViewOrderState createState() => _ViewOrderState();
+}
+
+class _ViewOrderState extends State<ViewOrder> {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepOrangeAccent,
         centerTitle: true,
         title: Text("View Order"),
-        
       ),
       body: GridView.count(
-        crossAxisCount:2,
-        padding: EdgeInsets.all(16.0),
-        childAspectRatio: 0.9,
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
-        children: <Widget>[
-          tableItems("TABLE 1", "assets/slider/slider1.jpg", Colors.red, Colors.indigo),
-          tableItems("TABLE 2", "assets/slider/slider2.jpg", Colors.orange , Colors.indigo),
-          tableItems("TABLE 3", "assets/slider/slider3.jpg", Colors.yellow , Colors.indigo),
-          tableItems("TABLE 4", "assets/slider/slider4.jpg", Colors.green, Colors.indigo),
-          tableItems("TABLE 5", "assets/slider/slider5.jpg", Colors.blue , Colors.indigo) ,
-          tableItems("TABLE 6", "assets/slider/slider1.jpg", Colors.black45 , Colors.indigo) ,
-
-
-        ],
-        )   
+        crossAxisCount: 2,
+        children: List.generate(widget._table.length, (index) {
+          return Center(
+            child: tableItems(widget._table[index].tableImageName,
+                widget._table[index].tableStatus, index),
+          );
+        }),
+      ),
     );
   }
 
-
-  Widget tableItems(String tableName, String tableImage, Color color1, Color color2){
+  
+  Widget tableItems(String tableImageName, String tableStatus, int index) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24.0),
-        gradient: new LinearGradient(
-          colors:[color1, color2],
-          begin: Alignment.centerLeft,
-          end: new Alignment(1.0, 1.0),
-        )
-      ),
-      child: Stack(
-        children: <Widget>[
-          Opacity(
-            opacity: 0.3,
-            child: Container(
-              decoration: new BoxDecoration(
-                borderRadius: BorderRadius.circular(24.0),
-                image: DecorationImage(
-                  image: AssetImage(tableImage),
-                  fit: BoxFit.fill, 
-                  ),
+          borderRadius: BorderRadius.circular(100.0),
+          gradient: new LinearGradient(
+            colors: [Colors.grey, Colors.black],
+            begin: Alignment.centerLeft,
+            end: new Alignment(1.0, 1.0),
+          )),
+      child: Stack(children: <Widget>[
+        Opacity(
+          opacity: 0.8,
+          child: Container(
+            padding: EdgeInsets.all(5),
+            decoration: new BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+              image: DecorationImage(
+                image: AssetImage(
+                  tableImageName,
+                ),
+                fit: BoxFit.fill,
               ),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left:16.0),
-                child:Text(tableName, style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold))
-                )
-            ],
-          )
-
-        ]
-      ),
-
-
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 50,),
+              child: Text("Table " + index.toString(),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 50, bottom: 3),
+              child: Text(tableStatus,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold)),
+            ),
+          ],
+        )
+      ]),
     );
   }
 }

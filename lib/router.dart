@@ -40,7 +40,7 @@ Route<dynamic> createRoute(settings) {
     case view_orderRoute:
       return MaterialPageRoute(
           settings: RouteSettings(name: view_orderRoute),
-          builder: (context) => ViewOrder());
+          builder: (context) => ViewOrder(arguments));
     case help_pageRoute:
       return MaterialPageRoute(
           settings: RouteSettings(name: help_pageRoute),
