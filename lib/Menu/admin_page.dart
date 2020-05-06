@@ -156,95 +156,12 @@ class AdminPage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ViewOrder()),
+                    MaterialPageRoute(builder: (context) => ViewOrder(mockTable)),
                   );
                 },
               )),
           // horizontalList1,
-          Row(
-            children: <Widget>[
-              new Expanded(
-                  child: Container(
-                height: 140,
-                child: new Column(children: <Widget>[
-                  new Container(
-                    height: 100,
-                    decoration: new BoxDecoration(
-                        borderRadius: new BorderRadius.circular(5.0),
-                        image: new DecorationImage(
-                            image: AssetImage("assets/tableW.jpg"),
-                            fit: BoxFit.cover)),
-                  ),
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ViewOrder()),
-                        );
-                      },
-                      child: new Text(
-                        "Table 1",
-                        style: new TextStyle(fontSize: 16.0),
-                        textAlign: TextAlign.center,
-                      )),
-                ]),
-              )),
-              new SizedBox(width: 5.0),
-              new Expanded(
-                  child: Container(
-                height: 140,
-                child: new Column(children: <Widget>[
-                  new Container(
-                    height: 100,
-                    decoration: new BoxDecoration(
-                        borderRadius: new BorderRadius.circular(5.0),
-                        image: new DecorationImage(
-                            image: AssetImage("assets/tableX.png"),
-                            fit: BoxFit.cover)),
-                  ),
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ViewOrder()),
-                        );
-                      },
-                      child: new Text(
-                        "Table 2",
-                        style: new TextStyle(fontSize: 16.0),
-                        textAlign: TextAlign.center,
-                      )),
-                ]),
-              )),
-              new SizedBox(width: 5.0),
-              new Expanded(
-                  child: Container(
-                height: 140,
-                child: new Column(children: <Widget>[
-                  new Container(
-                    height: 100,
-                    decoration: new BoxDecoration(
-                        borderRadius: new BorderRadius.circular(5.0),
-                        image: new DecorationImage(
-                            image: AssetImage("assets/tableZ.jpg"),
-                            fit: BoxFit.cover)),
-                  ),
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ViewOrder()),
-                        );
-                      },
-                      child: new Text(
-                        "Table 3",
-                        style: new TextStyle(fontSize: 16.0),
-                        textAlign: TextAlign.center,
-                      )),
-                ]),
-              )),
-            ],
-          ), //ROW
+           //ROW
         ],
       ),
     );
@@ -275,3 +192,90 @@ class ShowNotification extends StatelessWidget {
         )));
   }
 }
+
+
+
+// Row(
+//             children: <Widget>[
+//               new Expanded(
+//                   child: Container(
+//                 height: 140,
+//                 child: new Column(children: <Widget>[
+//                   new Container(
+//                     height: 100,
+//                     decoration: new BoxDecoration(
+//                         borderRadius: new BorderRadius.circular(5.0),
+//                         image: new DecorationImage(
+//                             image: AssetImage("assets/tableW.jpg"),
+//                             fit: BoxFit.cover)),
+//                   ),
+//                   InkWell(
+//                       onTap: () {
+//                         Navigator.push(
+//                           context,
+//                           MaterialPageRoute(builder: (context) => ViewOrder()),
+//                         );
+//                       },
+//                       child: new Text(
+//                         "Table 1",
+//                         style: new TextStyle(fontSize: 16.0),
+//                         textAlign: TextAlign.center,
+//                       )),
+//                 ]),
+//               )),
+//               new SizedBox(width: 5.0),
+//               new Expanded(
+//                   child: Container(
+//                 height: 140,
+//                 child: new Column(children: <Widget>[
+//                   new Container(
+//                     height: 100,
+//                     decoration: new BoxDecoration(
+//                         borderRadius: new BorderRadius.circular(5.0),
+//                         image: new DecorationImage(
+//                             image: AssetImage("assets/tableX.png"),
+//                             fit: BoxFit.cover)),
+//                   ),
+//                   InkWell(
+//                       onTap: () {
+//                         Navigator.push(
+//                           context,
+//                           MaterialPageRoute(builder: (context) => ViewOrder(mockTable)),
+//                         );
+//                       },
+//                       child: new Text(
+//                         "Table 2",
+//                         style: new TextStyle(fontSize: 16.0),
+//                         textAlign: TextAlign.center,
+//                       )),
+//                 ]),
+//               )),
+//               new SizedBox(width: 5.0),
+//               new Expanded(
+//                   child: Container(
+//                 height: 140,
+//                 child: new Column(children: <Widget>[
+//                   new Container(
+//                     height: 100,
+//                     decoration: new BoxDecoration(
+//                         borderRadius: new BorderRadius.circular(5.0),
+//                         image: new DecorationImage(
+//                             image: AssetImage("assets/tableZ.jpg"),
+//                             fit: BoxFit.cover)),
+//                   ),
+//                   InkWell(
+//                       onTap: () {
+//                         Navigator.push(
+//                           context,
+//                           MaterialPageRoute(builder: (context) => ViewOrder()),
+//                         );
+//                       },
+//                       child: new Text(
+//                         "Table 3",
+//                         style: new TextStyle(fontSize: 16.0),
+//                         textAlign: TextAlign.center,
+//                       )),
+//                 ]),
+//               )),
+//             ],
+//           ),

@@ -1,3 +1,5 @@
+import 'package:food_app/models/table.dart';
+
 import 'customer.dart';
 import 'order.dart';
 import 'orderitem.dart';
@@ -102,24 +104,29 @@ List<Customer> mockCustomer = [
 List<Order> mockOrder = [
   Order(
       items: mockOrderItem0,
+      type: "Dine In",
       customer: mockCustomer[0],
       orderStatus: "In Process"),
   Order(
       items: mockOrderItem1,
+      type: "Dine In",
       customer: mockCustomer[1],
       orderStatus: "In Process"),
   Order(
       items: mockOrderItem2,
-      customer: mockCustomer[1],
-      orderStatus: "In Process"),
+      type: "Dine In",
+      customer: mockCustomer[3],
+      orderStatus: "Completed"),
   Order(
       items: mockOrderItem3,
+      type: "Delivery",
       customer: mockCustomer[2],
       orderStatus: "Completed"),
   Order(
       items: mockOrderItem4,
+      type: "Take Away",
       customer: mockCustomer[3],
-      orderStatus: "Completed"),
+      orderStatus: "In Process"),
 ];
 
 List<OrderItem> mockOrderItem0 = [
@@ -161,4 +168,16 @@ List<OrderItem> mockOrderItem4 = [
       fooditem: mockFoodItem[5], quantity: 1, orderItemStatus: "Completed"),
   OrderItem(
       fooditem: mockFoodItem[7], quantity: 1, orderItemStatus: "Completed"),
+];
+
+List<Table> mockTable = [
+  Table(
+      order: mockOrder[0], customer: mockCustomer[0], tableStatus: "Occupied",tableImageName: "assets/table_red.png"),
+  Table(
+      order: mockOrder[1], customer: mockCustomer[1], tableStatus: "Occupied",tableImageName: "assets/table_red.png"),
+  Table(order: null, customer: null, tableStatus: "Empty",tableImageName: "assets/table_green.png"),
+  Table(order: null, customer: null, tableStatus: "Empty",tableImageName: "assets/table_green.png"),
+  Table(
+      order: mockOrder[2], customer: mockCustomer[3], tableStatus: "Cleaning",tableImageName: "assets/table_yellow.png"),
+  Table(order: null, customer: null, tableStatus: "Empty",tableImageName: "assets/table_green.png"),   
 ];

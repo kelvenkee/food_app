@@ -25,7 +25,7 @@ Route<dynamic> createRoute(settings) {
     case view_menuRoute:
       return MaterialPageRoute(builder: (context) => ViewMenu(mockFoodItem));
     case view_orderRoute:
-      return MaterialPageRoute(builder: (context) => ViewOrder());
+      return MaterialPageRoute(builder: (context) => ViewOrder(mockTable));
     case help_pageRoute:
       return MaterialPageRoute(builder: (context) => HelpPage());
     case profile_pageRoute:
