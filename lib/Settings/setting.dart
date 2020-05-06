@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'profile_page.dart';
-import '../main.dart';
+// import '../main.dart';
 import 'setting_password.dart';
 
 class SettingPage extends StatelessWidget {
@@ -102,10 +102,10 @@ class SettingPage extends StatelessWidget {
         icon: const Icon(Icons.exit_to_app),
         label: const Text('Logout'),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => FoodApp()),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => FoodApp()),
+          // );
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

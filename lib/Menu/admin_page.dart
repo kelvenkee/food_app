@@ -3,9 +3,10 @@ import 'package:food_app/Settings/help_page.dart';
 import 'package:food_app/Login/login.dart';
 import '../Settings/profile_page.dart';
 import '../Settings/setting.dart';
-import '../Menu/edit_menu.dart';
+import '../Menu/view_menu.dart';
 import '../Menu/view_order.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:food_app/models/mockdata.dart';
 
 class AdminPage extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -115,7 +116,7 @@ class AdminPage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EditMenu()),
+                    MaterialPageRoute(builder: (context) => ViewMenu(mockFoodItem)),
                   );
                 },
               )),

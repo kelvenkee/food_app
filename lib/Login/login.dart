@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/models/mockdata.dart';
 import './login_page.dart';
 import 'package:food_app/customer_page.dart';
 
@@ -97,7 +98,7 @@ class _Customers extends StatelessWidget {
         onPressed: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (BuildContext context) {
-            return CustomerPage();
+            return CustomerPage(mockFoodItem);
           }));
         },
       ),
