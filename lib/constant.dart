@@ -8,4 +8,5 @@ const String profile_pageRoute = '/profile_page';
 const String setting_passwordRoute = '/setting_password';
 const String settingRoute = '/setting';
 const String splashScreenRoute = '/splashscreen';
-const String table_order_detailRoute ='/table_order_detail';
+const String customerPageRoute = '/customer_page';
+const String food_detailRoute = '/food_detail';

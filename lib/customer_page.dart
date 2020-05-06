@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/Menu/view_menu.dart';
-import 'package:food_app/food_detail.dart';
-import 'package:food_app/models/mockdata.dart';
+import 'package:food_app/constant.dart';
 
 class CustomerPage extends StatefulWidget {
   final List _foodItems;
@@ -68,11 +66,10 @@ class _CustomerPageState extends State<CustomerPage> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            FoodDetail(widget._foodItems[index])),
+                    food_detailRoute,
+                    arguments: widget._foodItems[index],
                   );
                 },
               ),
