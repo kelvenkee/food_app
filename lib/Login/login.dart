@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './login_page.dart';
+import 'package:food_app/customer_page.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -93,7 +94,12 @@ class _Customers extends StatelessWidget {
           "Customers",
           style: TextStyle(color: Colors.deepOrangeAccent[400]),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext context) {
+            return CustomerPage();
+          }));
+        },
       ),
     );
   }
