@@ -9,31 +9,62 @@ import 'package:food_app/Settings/profile_page.dart';
 import 'package:food_app/Settings/setting.dart';
 import 'package:food_app/Settings/setting_password.dart';
 import 'package:food_app/constant.dart';
+import 'package:food_app/customer_page.dart';
+import 'package:food_app/food_detail.dart';
 import 'package:food_app/splashscreen.dart';
 import 'package:food_app/models/mockdata.dart';
 
 Route<dynamic> createRoute(settings) {
+  final arguments = settings.arguments;
   switch (settings.name) {
     case splashScreenRoute:
-      return MaterialPageRoute(builder: (context) => FirstSplashScreen());
+      return MaterialPageRoute(
+          settings: RouteSettings(name: splashScreenRoute),
+          builder: (context) => FirstSplashScreen());
     case loginRoute:
-      return MaterialPageRoute(builder: (context) => Login());
+      return MaterialPageRoute(
+          settings: RouteSettings(name: loginRoute),
+          builder: (context) => Login());
     case login_pageRoute:
-      return MaterialPageRoute(builder: (context) => LoginPage());
+      return MaterialPageRoute(
+          settings: RouteSettings(name: login_pageRoute),
+          builder: (context) => LoginPage());
     case admin_pageRoute:
-      return MaterialPageRoute(builder: (context) => AdminPage());
+      return MaterialPageRoute(
+          settings: RouteSettings(name: admin_pageRoute),
+          builder: (context) => AdminPage());
     case view_menuRoute:
-      return MaterialPageRoute(builder: (context) => ViewMenu(mockFoodItem));
+      return MaterialPageRoute(
+          settings: RouteSettings(name: view_menuRoute),
+          builder: (context) => ViewMenu(arguments));
     case view_orderRoute:
-      return MaterialPageRoute(builder: (context) => ViewOrder());
+      return MaterialPageRoute(
+          settings: RouteSettings(name: view_orderRoute),
+          builder: (context) => ViewOrder());
     case help_pageRoute:
-      return MaterialPageRoute(builder: (context) => HelpPage());
+      return MaterialPageRoute(
+          settings: RouteSettings(name: help_pageRoute),
+          builder: (context) => HelpPage());
     case profile_pageRoute:
-      return MaterialPageRoute(builder: (context) => ProfilePage());
+      return MaterialPageRoute(
+          settings: RouteSettings(name: profile_pageRoute),
+          builder: (context) => ProfilePage());
     case setting_passwordRoute:
-      return MaterialPageRoute(builder: (context) => SettingPasswordPage());
+      return MaterialPageRoute(
+          settings: RouteSettings(name: setting_passwordRoute),
+          builder: (context) => SettingPasswordPage());
     case settingRoute:
-      return MaterialPageRoute(builder: (context) => SettingPage());
+      return MaterialPageRoute(
+          settings: RouteSettings(name: settingRoute),
+          builder: (context) => SettingPage());
+    case customerPageRoute:
+      return MaterialPageRoute(
+          settings: RouteSettings(name: customerPageRoute),
+          builder: (context) => CustomerPage(mockFoodItem));
+    case food_detailRoute:
+      return MaterialPageRoute(
+          settings: RouteSettings(name: food_detailRoute),
+          builder: (context) => FoodDetail(arguments));
   }
   return null;
 }

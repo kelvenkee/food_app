@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/Settings/help_page.dart';
-import 'package:food_app/Login/login.dart';
-import '../Settings/profile_page.dart';
-import '../Settings/setting.dart';
-import '../Menu/view_menu.dart';
+import 'package:food_app/constant.dart';
 import '../Menu/view_order.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:food_app/models/mockdata.dart';
@@ -40,22 +36,7 @@ class AdminPage extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AdminPage()),
-              );
-            },
-            child: ListTile(
-              title: Text('Home', style: TextStyle(color: Colors.black)),
-              leading: Icon(Icons.home, color: Colors.black),
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
-              );
+              Navigator.pushNamed(context, profile_pageRoute);
             },
             child: ListTile(
               title:
@@ -65,10 +46,7 @@ class AdminPage extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SettingPage()),
-              );
+              Navigator.pushNamed(context, settingRoute);
             },
             child: ListTile(
               title: Text('Settings', style: TextStyle(color: Colors.black)),
@@ -77,10 +55,7 @@ class AdminPage extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HelpPage()),
-              );
+              Navigator.pushNamed(context, help_pageRoute);
             },
             child: ListTile(
               title: Text('Help', style: TextStyle(color: Colors.black)),
@@ -89,10 +64,7 @@ class AdminPage extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Login()),
-              );
+              Navigator.popUntil(context, (route) => route.isFirst);
             },
             child: ListTile(
               title: Text('Log Out', style: TextStyle(color: Colors.black)),
@@ -114,10 +86,8 @@ class AdminPage extends StatelessWidget {
                 trailing:
                     Icon(Icons.keyboard_arrow_right, color: Colors.blueGrey),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ViewMenu(mockFoodItem)),
-                  );
+                  Navigator.pushNamed(context, view_menuRoute,
+                      arguments: mockFoodItem);
                 },
               )),
           Container(
@@ -154,10 +124,7 @@ class AdminPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0)),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ViewOrder()),
-                  );
+                  Navigator.pushNamed(context, view_orderRoute);
                 },
               )),
           // horizontalList1,

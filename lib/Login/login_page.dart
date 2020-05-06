@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'setting.dart';
-import '../Menu/admin_page.dart';
+import '../constant.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -49,22 +48,43 @@ class _LoginPageState extends State<LoginPage> {
       key: _formKey,
       child: Column(
         children: <Widget>[
-          SizedBox(
-            height: 60.0,
+          Column(
+            children: <Widget>[
+              SizedBox(
+                height: 60.0,
+              ),
+              username(),
+              SizedBox(
+                height: 20.0,
+              ),
+              password(),
+              SizedBox(
+                height: 20,
+              ),
+              validator(context),
+              SizedBox(
+                height: 20,
+              ),
+            ],
           ),
-          username(),
-          SizedBox(
-            height: 20.0,
-          ),
-          password(),
-          SizedBox(
-            height: 20,
-          ),
-          validator(context),
-          SizedBox(
-            height: 20,
-          ),
-          Text('Customer? Click here to go back')
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Customer? Click '),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'here',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline),
+                ),
+              ),
+              Text(' to go back'),
+            ],
+          )
         ],
       ),
     );
@@ -82,9 +102,9 @@ class _LoginPageState extends State<LoginPage> {
 
             if (result) {
               print("login success");
-              Navigator.push(
+              Navigator.pushNamed(
                 context,
-                MaterialPageRoute(builder: (context) => AdminPage()),
+                admin_pageRoute,
               );
             } else {
               Scaffold.of(context).showSnackBar(new SnackBar(
@@ -100,7 +120,6 @@ class _LoginPageState extends State<LoginPage> {
         },
         child:
             Text('Login', style: TextStyle(fontSize: 20, color: Colors.white)),
-            
       ),
     );
   }
