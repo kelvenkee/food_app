@@ -51,3 +51,10 @@ void increaseItemQuantity(OrderItem orderItems, OrderItem orderItem) {
   orderItems.fooditem.quantity += orderItem.fooditem.quantity;
   orderItems.quantity += orderItem.quantity;
 }
+
+List<OrderItem> removeFromList(OrderItem orderItem) {
+  //remove it from the list
+  orderItems.remove(orderItem);
+
+  return orderItems;
+}
