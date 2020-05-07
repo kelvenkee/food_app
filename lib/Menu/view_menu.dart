@@ -1,15 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/Menu/edit_menu.dart';
+import 'package:food_app/models/fooditem.dart';
 
 class ViewMenu extends StatefulWidget {
-  final List _foodItems;
+  final List <FoodItem> _foodItems;
   ViewMenu(this._foodItems);
   @override
   _ViewMenuState createState() => _ViewMenuState();
 }
 
 class _ViewMenuState extends State<ViewMenu> {
+
+  void _navigate(int index) async{
+    FoodItem returnData= await Navigator.push(
+      context, 
+      MaterialPageRoute(
+        builder: (context)=>
+          EditMenu(FoodItem.copy(widget._foodItems[index])),
+        ),
+    );
+    if(returnData != null){
+      //update data in the view menu screen
+      //rebuild the screen (setState)
+      setState(() => widget._foodItems[index]= returnData);
+    }
+
+  }
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -59,14 +78,7 @@ class _ViewMenuState extends State<ViewMenu> {
                         fit: BoxFit.cover, alignment: Alignment.center),
                   ),
                 ),
-                onTap: () {
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            EditMenu(widget._foodItems[index])),
-                  );
-                },
+                onTap: () => _navigate(index),
               ),
           separatorBuilder: (context, index) => Divider(
                 color: Colors.blueGrey,

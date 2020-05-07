@@ -13,9 +13,12 @@ class _EditMenuState extends State<EditMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+    onWillPop: () => Future.value(false),    
+    child: Scaffold(
         resizeToAvoidBottomPadding: false,
         appBar: AppBar(
+          leading: Container(),
           backgroundColor: Colors.deepOrangeAccent,
           centerTitle: true,
           title: Text("Edit Menu"),
@@ -27,6 +30,7 @@ class _EditMenuState extends State<EditMenu> {
           _buildImage(),
           _buildBody(),
         ])
+    )
     );
   }
   
@@ -71,18 +75,17 @@ class _EditMenuState extends State<EditMenu> {
             SizedBox(height: 16),
               TextFormField(
                 keyboardType: TextInputType.number,
-                initialValue: "RM "+ widget._foodItems.unitPrice.toStringAsFixed(2),
+                initialValue:  widget._foodItems.unitPrice.toStringAsFixed(2),
                 style: TextStyle(
                   fontSize: 25,
-                  fontWeight: FontWeight.bold,
                   color: Colors.redAccent,
                 ),
                 decoration: InputDecoration(
                   labelStyle: TextStyle(fontSize:20,fontWeight:FontWeight.bold),
-                  labelText: "Price: ",
+                  labelText: "Price(RM): ",
                   hintText: "Enter price ...",
                 ),
-                onChanged: (newValue)=>setState( ()=> widget._foodItems.unitPrice= newValue as double),
+                onChanged: (newValue)=>setState( ()=> widget._foodItems.unitPrice= double.parse(newValue)),
               ),
             SizedBox(width: 10),
             SizedBox(height: 5),
@@ -115,7 +118,7 @@ class _EditMenuState extends State<EditMenu> {
                   onPressed: ()=> Navigator.pop(context, widget._foodItems) ,   
                   backgroundColor: Colors.deepOrangeAccent,               
                   ),
-                  
+                  SizedBox(width: 15),
                 FloatingActionButton.extended(
                   heroTag: null,
                   icon: Icon(Icons.cancel),
