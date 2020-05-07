@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/Menu/edit_menu.dart';
 
 class ViewMenu extends StatefulWidget {
   final List _foodItems;
@@ -54,7 +55,14 @@ class _ViewMenuState extends State<ViewMenu> {
                         fit: BoxFit.cover, alignment: Alignment.center),
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            EditMenu(widget._foodItems[index])),
+                  );
+                },
               ),
           separatorBuilder: (context, index) => Divider(
                 color: Colors.blueGrey,
