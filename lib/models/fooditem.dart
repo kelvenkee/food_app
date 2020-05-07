@@ -19,4 +19,12 @@ class FoodItem {
   });
 
   double get totalItem => (quantity * unitPrice);
+  FoodItem.copy(FoodItem from)
+      : this(
+            foodID: from.foodID,
+            foodName: from.foodName,
+            foodDescription: from.foodDescription,
+            unitPrice: from.unitPrice,
+            imageName: from.imageName);
+
 }
