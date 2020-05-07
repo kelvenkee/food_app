@@ -140,44 +140,31 @@ List<Order> mockOrder = [
 ];
 
 List<OrderItem> mockOrderItem0 = [
-  OrderItem(
-      fooditem: mockFoodItem[0], quantity: 1, orderItemStatus: "Completed"),
-  OrderItem(
-      fooditem: mockFoodItem[8], quantity: 1, orderItemStatus: "In Process"),
-  OrderItem(
-      fooditem: mockFoodItem[5], quantity: 1, orderItemStatus: "In Process"),
+  OrderItem(fooditem: mockFoodItem[0], quantity: 1),
+  OrderItem(fooditem: mockFoodItem[8], quantity: 1),
+  OrderItem(fooditem: mockFoodItem[5], quantity: 1),
 ];
 
 List<OrderItem> mockOrderItem1 = [
-  OrderItem(
-      fooditem: mockFoodItem[1], quantity: 1, orderItemStatus: "In Process"),
-  OrderItem(
-      fooditem: mockFoodItem[8], quantity: 3, orderItemStatus: "In Process"),
+  OrderItem(fooditem: mockFoodItem[1], quantity: 1),
+  OrderItem(fooditem: mockFoodItem[8], quantity: 3),
 ];
 
 List<OrderItem> mockOrderItem2 = [
-  OrderItem(
-      fooditem: mockFoodItem[2], quantity: 5, orderItemStatus: "In Process"),
+  OrderItem(fooditem: mockFoodItem[2], quantity: 5),
 ];
 
 List<OrderItem> mockOrderItem3 = [
-  OrderItem(
-      fooditem: mockFoodItem[1], quantity: 1, orderItemStatus: "Completed"),
-  OrderItem(
-      fooditem: mockFoodItem[2], quantity: 1, orderItemStatus: "Completed"),
-  OrderItem(
-      fooditem: mockFoodItem[3], quantity: 1, orderItemStatus: "Completed"),
-  OrderItem(
-      fooditem: mockFoodItem[4], quantity: 1, orderItemStatus: "Completed"),
-  OrderItem(
-      fooditem: mockFoodItem[9], quantity: 12, orderItemStatus: "Completed"),
+  OrderItem(fooditem: mockFoodItem[1], quantity: 1),
+  OrderItem(fooditem: mockFoodItem[2], quantity: 1),
+  OrderItem(fooditem: mockFoodItem[3], quantity: 1),
+  OrderItem(fooditem: mockFoodItem[4], quantity: 1),
+  OrderItem(fooditem: mockFoodItem[9], quantity: 12),
 ];
 
 List<OrderItem> mockOrderItem4 = [
-  OrderItem(
-      fooditem: mockFoodItem[5], quantity: 1, orderItemStatus: "Completed"),
-  OrderItem(
-      fooditem: mockFoodItem[7], quantity: 1, orderItemStatus: "Completed"),
+  OrderItem(fooditem: mockFoodItem[5], quantity: 1),
+  OrderItem(fooditem: mockFoodItem[7], quantity: 1),
 ];
 
 List<Table> mockTable = [

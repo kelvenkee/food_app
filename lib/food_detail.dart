@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/models/fooditem.dart';
-import 'package:food_app/models/order.dart';
 import 'package:food_app/models/orderitem.dart';
-
-import 'constant.dart';
 
 class FoodDetail extends StatefulWidget {
   final FoodItem _foodItems;
@@ -14,11 +11,13 @@ class FoodDetail extends StatefulWidget {
 }
 
 class _FoodDetailState extends State<FoodDetail> {
-  var _quantity = 0;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  var _quantity = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
           backgroundColor: Colors.deepOrangeAccent,
           centerTitle: true,
@@ -97,14 +96,11 @@ class _FoodDetailState extends State<FoodDetail> {
                 Expanded(
                   child: RaisedButton(
                     onPressed: () {
-                      List<OrderItem> myList = List<OrderItem>(); // problem zzz
-                      print(_quantity);
-                      myList.add(OrderItem(
-                          fooditem: widget._foodItems,
-                          quantity: _quantity,
-                          orderItemStatus: "abc"));
-                      Navigator.pushNamed(context, cartRoute,
-                          arguments: myList);
+                      widget._foodItems.quantity = _quantity;
+                      OrderItem orderItem = new OrderItem(
+                          fooditem: widget._foodItems, quantity: _quantity);
+                      createFood(orderItem);
+                      addedSuccessNotification(context, _scaffoldKey);
                     },
                     padding: EdgeInsets.symmetric(vertical: 16),
                     color: Colors.deepOrangeAccent,
@@ -124,26 +120,24 @@ class _FoodDetailState extends State<FoodDetail> {
         ),
       ),
     );
-    // return new Container(
-    //   constraints: new BoxConstraints.expand(
-    //     height: 200,
-    //   ),
-    //   alignment: Alignment.bottomLeft,
-    //   padding: new EdgeInsets.only(left: 16.0, bottom: 8.0),
-    //   decoration: new BoxDecoration(
-    //     image: new DecorationImage(
-    //       image: new AssetImage('assets/slider/slider1.jpg'),
-    //       fit: BoxFit.cover,
-    //     ),
-    //   ),
-    //   child: new Text(
-    //     'Burger',
-    //     style: new TextStyle(
-    //       fontWeight: FontWeight.bold,
-    //       fontSize: 20.0,
-    //     ),
-    //   ),
-    // );
+  }
+
+  void createFood(OrderItem orderItem) {
+    return setState(() {
+      addToList(orderItem);
+    });
+  }
+
+  addedSuccessNotification(
+      BuildContext context, GlobalKey<ScaffoldState> _scaffoldKeyy) {
+    final snackBar = SnackBar(
+      content: Text('Food Added Successfully!'),
+      backgroundColor: Colors.greenAccent,
+      duration: Duration(seconds: 3),
+    );
+    // Find the Scaffold in the widget tree and use
+    // it to show a SnackBar.
+    _scaffoldKeyy.currentState.showSnackBar(snackBar);
   }
 
   Widget _buildCounter() {

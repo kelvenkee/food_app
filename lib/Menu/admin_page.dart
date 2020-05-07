@@ -147,9 +147,6 @@ class AdminPage extends StatelessWidget {
               );
             }),
           ),
-
-          // horizontalList1,
-          //ROW
         ],
       ),
     );
@@ -256,6 +253,5 @@ class _TableItemsState extends State<TableItems> {
         ),
       ]),
     );
-    ;
   }
 }

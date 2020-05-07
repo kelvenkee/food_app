@@ -10,8 +10,10 @@ class CustomerPage extends StatefulWidget {
 }
 
 class _CustomerPageState extends State<CustomerPage> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.deepOrangeAccent,
         centerTitle: true,
@@ -19,7 +21,9 @@ class _CustomerPageState extends State<CustomerPage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: null,
+            onPressed: () {
+              Navigator.pushNamed(context, cartRoute);
+            },
             tooltip: 'Checkout',
           )
         ],
@@ -78,51 +82,6 @@ class _CustomerPageState extends State<CustomerPage> {
                 color: Colors.blueGrey,
               ),
           itemCount: widget._foodItems.length),
-      // body: ListView(
-      //   scrollDirection: Axis.vertical,
-      //   children: <Widget>[
-      //     Padding(
-      //       padding: const EdgeInsets.all(16.0),
-      //       child: Container(
-      //         child: FittedBox(
-      //           child: Material(
-      //             color: Colors.white,
-      //             elevation: 14.0,
-      //             borderRadius: BorderRadius.circular(24.0),
-      //             shadowColor: Color(0x802196F3),
-      //             child: InkWell(
-      //               onTap: () {
-      //                 Navigator.push(
-      //                   context,
-      //                   MaterialPageRoute(builder: (context) => FoodDetail()),
-      //                 );
-      //               },
-      //               child: Row(
-      //                 children: <Widget>[
-      //                   Container(
-      //                     child: myDetailsContainer1(),
-      //                   ),
-      //                   Container(
-      //                     child: ClipRRect(
-      //                       borderRadius: new BorderRadius.circular(24.0),
-      //                       child: Image(
-      //                           width: 150,
-      //                           height: 100,
-      //                           fit: BoxFit.contain,
-      //                           alignment: Alignment.topRight,
-      //                           image:
-      //                               AssetImage('assets/slider/slider1.jpg')),
-      //                     ),
-      //                   ),
-      //                 ],
-      //               ),
-      //             ),
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

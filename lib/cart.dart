@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'models/orderitem.dart';
 
 class Cart extends StatefulWidget {
-  final List<OrderItem> _data;
-
-  Cart(this._data);
   @override
   _CartState createState() => _CartState();
 }
@@ -17,47 +14,47 @@ class _CartState extends State<Cart> {
         backgroundColor: Colors.deepOrangeAccent,
         centerTitle: true,
         title: Text('Orders'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: null,
-            tooltip: 'Checkout',
-          )
-        ],
       ),
       body: ListView.separated(
           itemBuilder: (context, index) => ListTile(
                 contentPadding: const EdgeInsets.all(5.0),
-                title: Text(widget._data[index].fooditem.foodID),
+                title: Text(orderItems[index].fooditem.foodName,
+                    style: TextStyle(
+                        color: Colors.orange[900],
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold)),
                 subtitle: Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          widget._data[index].fooditem.foodID,
+                          "x" +
+                              orderItems[index].quantity.toString() +
+                              " Total is :" +
+                              returnTotalAmount(orderItems),
                           style: TextStyle(
                             color: Colors.black54,
-                            fontSize: 13.0,
+                            fontSize: 15.0,
                           ),
                           textAlign: TextAlign.justify,
                         ),
                       ]),
                 ),
                 trailing: Container(
-                  height: 80.0,
-                  width: 80.0,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Text(widget._data[index].quantity.toString()),
+                  width: 55.0,
+                  child: Text(
+                    // this is the total price for each food , quantity * unit price
+                    'MYR ' + (orderItems[index].fooditem.totalItem.toString()),
                   ),
                 ),
-                onTap: () {},
               ),
           separatorBuilder: (context, index) => Divider(
                 color: Colors.blueGrey,
               ),
-          itemCount: widget._data.length),
+          itemCount: orderItems.length),
     );
   }
 }
+// for total price of all food , the code is
+//
