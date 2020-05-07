@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_app/Login/login.dart';
 import 'package:food_app/Login/login_page.dart';
 import 'package:food_app/Menu/admin_page.dart';
+import 'package:food_app/Menu/table_order_detail.dart';
 import 'package:food_app/Menu/view_menu.dart';
 import 'package:food_app/Menu/view_order.dart';
 import 'package:food_app/Settings/help_page.dart';
@@ -74,3 +75,5 @@ Route<dynamic> createRoute(settings) {
   }
   return null;
 }
+
+

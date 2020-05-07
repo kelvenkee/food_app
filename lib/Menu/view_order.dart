@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/Menu/table_order_detail.dart';
+
 
 class ViewOrder extends StatefulWidget {
   final List _table;
@@ -17,7 +19,7 @@ class _ViewOrderState extends State<ViewOrder> {
         title: Text("View Order"),
       ),
       body: GridView.count(
-        crossAxisCount: 2,
+        crossAxisCount: 3,
         children: List.generate(widget._table.length, (index) {
           return Center(
             child: tableItems(widget._table[index].tableImageName,
@@ -28,7 +30,6 @@ class _ViewOrderState extends State<ViewOrder> {
     );
   }
 
-  
   Widget tableItems(String tableImageName, String tableStatus, int index) {
     return Container(
       decoration: BoxDecoration(
@@ -55,26 +56,43 @@ class _ViewOrderState extends State<ViewOrder> {
           ),
         ),
         Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Text((index + 1).toString(),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ],
+        ),
+        Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(left: 50,),
-              child: Text("Table " + index.toString(),
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold)),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 50, bottom: 3),
-              child: Text(tableStatus,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold)),
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Center(
+                child: Text(tableStatus,
+                    style: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold)),
+              ),
             ),
           ],
-        )
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TableOrderDetail(index+1)),
+            );
+          },
+        ),
       ]),
     );
   }
