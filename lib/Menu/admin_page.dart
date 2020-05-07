@@ -3,6 +3,7 @@ import 'package:food_app/constant.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:food_app/models/mockdata.dart';
 
+import '../models/mockdata.dart';
 import 'table_order_detail.dart';
 
 class AdminPage extends StatelessWidget {
@@ -126,18 +127,9 @@ class AdminPage extends StatelessWidget {
                         fontSize: 12.0)),
                 onTap: () {
                   Navigator.pushNamed(context, view_orderRoute,
-                      arguments: mockTable);
+                      arguments: mockOrder);
                 },
               )),
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            children: List.generate(2, (_index) {
-              return Center(
-                child: TableItems(_index),
-              );
-            }),
-          ),
           GridView.count(
             crossAxisCount: 3,
             shrinkWrap: true,
@@ -247,7 +239,7 @@ class _TableItemsState extends State<TableItems> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => TableOrderDetail(widget._index + 1)),
+                  builder: (context) => TableOrderDetail(mockTable[widget._index].order, widget._index + 1) ),
             );
           },
         ),
