@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/Settings/help_page.dart';
-import 'package:food_app/Login/login.dart';
-import '../Settings/profile_page.dart';
-import '../Settings/setting.dart';
-import '../Menu/view_menu.dart';
-import '../Menu/view_order.dart';
+import 'package:food_app/constant.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:food_app/models/mockdata.dart';
+
+import 'table_order_detail.dart';
 
 class AdminPage extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -40,22 +37,7 @@ class AdminPage extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AdminPage()),
-              );
-            },
-            child: ListTile(
-              title: Text('Home', style: TextStyle(color: Colors.black)),
-              leading: Icon(Icons.home, color: Colors.black),
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
-              );
+              Navigator.pushNamed(context, profile_pageRoute);
             },
             child: ListTile(
               title:
@@ -65,10 +47,7 @@ class AdminPage extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SettingPage()),
-              );
+              Navigator.pushNamed(context, settingRoute);
             },
             child: ListTile(
               title: Text('Settings', style: TextStyle(color: Colors.black)),
@@ -77,10 +56,7 @@ class AdminPage extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HelpPage()),
-              );
+              Navigator.pushNamed(context, help_pageRoute);
             },
             child: ListTile(
               title: Text('Help', style: TextStyle(color: Colors.black)),
@@ -89,10 +65,7 @@ class AdminPage extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Login()),
-              );
+              Navigator.popUntil(context, (route) => route.isFirst);
             },
             child: ListTile(
               title: Text('Log Out', style: TextStyle(color: Colors.black)),
@@ -114,10 +87,8 @@ class AdminPage extends StatelessWidget {
                 trailing:
                     Icon(Icons.keyboard_arrow_right, color: Colors.blueGrey),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ViewMenu(mockFoodItem)),
-                  );
+                  Navigator.pushNamed(context, view_menuRoute,
+                      arguments: mockFoodItem);
                 },
               )),
           Container(
@@ -154,14 +125,31 @@ class AdminPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 12.0)),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ViewOrder(mockTable)),
-                  );
+                  Navigator.pushNamed(context, view_orderRoute,
+                      arguments: mockTable);
                 },
               )),
+          GridView.count(
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            children: List.generate(2, (_index) {
+              return Center(
+                child: TableItems(_index),
+              );
+            }),
+          ),
+          GridView.count(
+            crossAxisCount: 3,
+            shrinkWrap: true,
+            children: List.generate(mockTable.length, (_index) {
+              return Center(
+                child: TableItems(_index),
+              );
+            }),
+          ),
+
           // horizontalList1,
-           //ROW
+          //ROW
         ],
       ),
     );
@@ -193,89 +181,81 @@ class ShowNotification extends StatelessWidget {
   }
 }
 
+class TableItems extends StatefulWidget {
+  final int _index;
+  TableItems(this._index);
+  @override
+  _TableItemsState createState() => _TableItemsState();
+}
 
-
-// Row(
-//             children: <Widget>[
-//               new Expanded(
-//                   child: Container(
-//                 height: 140,
-//                 child: new Column(children: <Widget>[
-//                   new Container(
-//                     height: 100,
-//                     decoration: new BoxDecoration(
-//                         borderRadius: new BorderRadius.circular(5.0),
-//                         image: new DecorationImage(
-//                             image: AssetImage("assets/tableW.jpg"),
-//                             fit: BoxFit.cover)),
-//                   ),
-//                   InkWell(
-//                       onTap: () {
-//                         Navigator.push(
-//                           context,
-//                           MaterialPageRoute(builder: (context) => ViewOrder()),
-//                         );
-//                       },
-//                       child: new Text(
-//                         "Table 1",
-//                         style: new TextStyle(fontSize: 16.0),
-//                         textAlign: TextAlign.center,
-//                       )),
-//                 ]),
-//               )),
-//               new SizedBox(width: 5.0),
-//               new Expanded(
-//                   child: Container(
-//                 height: 140,
-//                 child: new Column(children: <Widget>[
-//                   new Container(
-//                     height: 100,
-//                     decoration: new BoxDecoration(
-//                         borderRadius: new BorderRadius.circular(5.0),
-//                         image: new DecorationImage(
-//                             image: AssetImage("assets/tableX.png"),
-//                             fit: BoxFit.cover)),
-//                   ),
-//                   InkWell(
-//                       onTap: () {
-//                         Navigator.push(
-//                           context,
-//                           MaterialPageRoute(builder: (context) => ViewOrder(mockTable)),
-//                         );
-//                       },
-//                       child: new Text(
-//                         "Table 2",
-//                         style: new TextStyle(fontSize: 16.0),
-//                         textAlign: TextAlign.center,
-//                       )),
-//                 ]),
-//               )),
-//               new SizedBox(width: 5.0),
-//               new Expanded(
-//                   child: Container(
-//                 height: 140,
-//                 child: new Column(children: <Widget>[
-//                   new Container(
-//                     height: 100,
-//                     decoration: new BoxDecoration(
-//                         borderRadius: new BorderRadius.circular(5.0),
-//                         image: new DecorationImage(
-//                             image: AssetImage("assets/tableZ.jpg"),
-//                             fit: BoxFit.cover)),
-//                   ),
-//                   InkWell(
-//                       onTap: () {
-//                         Navigator.push(
-//                           context,
-//                           MaterialPageRoute(builder: (context) => ViewOrder()),
-//                         );
-//                       },
-//                       child: new Text(
-//                         "Table 3",
-//                         style: new TextStyle(fontSize: 16.0),
-//                         textAlign: TextAlign.center,
-//                       )),
-//                 ]),
-//               )),
-//             ],
-//           ),
+class _TableItemsState extends State<TableItems> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100.0),
+          gradient: new LinearGradient(
+            colors: [Colors.grey, Colors.black],
+            begin: Alignment.centerLeft,
+            end: new Alignment(1.0, 1.0),
+          )),
+      child: Stack(children: <Widget>[
+        Opacity(
+          opacity: 0.8,
+          child: Container(
+            padding: EdgeInsets.all(5),
+            decoration: new BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+              image: DecorationImage(
+                image: AssetImage(
+                  mockTable[widget._index].tableImageName,
+                ),
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Text((widget._index + 1).toString(),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ],
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Center(
+                child: Text(mockTable[widget._index].tableStatus,
+                    style: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ],
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => TableOrderDetail(widget._index + 1)),
+            );
+          },
+        ),
+      ]),
+    );
+    ;
+  }
+}

@@ -31,19 +31,23 @@ class _ViewMenuState extends State<ViewMenu> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                            "Price: RM" +
-                                widget._foodItems[index].unitPrice.toStringAsFixed(2),
-                            style: TextStyle(
-                              color: Colors.black54,
-                              fontSize: 18.0,                              
-                            ),
-                            textAlign: TextAlign.justify,
-                            ),
-                        Text(widget._foodItems[index].foodDescription,
-                            style: TextStyle(
-                              color: Colors.black54,
-                              fontSize: 13.0,
-                            ),textAlign: TextAlign.justify,),
+                          "Price: RM" +
+                              widget._foodItems[index].unitPrice
+                                  .toStringAsFixed(2),
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 18.0,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                        Text(
+                          widget._foodItems[index].foodDescription,
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 13.0,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
                       ]),
                 ),
                 trailing: Container(

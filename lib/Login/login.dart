@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/models/mockdata.dart';
-import './login_page.dart';
-import 'package:food_app/customer_page.dart';
+import '../constant.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -68,10 +66,10 @@ class _Employee extends StatelessWidget {
           style: TextStyle(color: Colors.deepOrangeAccent[400]),
         ),
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (BuildContext context) {
-            return LoginPage();
-          }));
+          Navigator.pushNamed(
+            context,
+            login_pageRoute,
+          );
         },
       ),
     );
@@ -96,10 +94,7 @@ class _Customers extends StatelessWidget {
           style: TextStyle(color: Colors.deepOrangeAccent[400]),
         ),
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (BuildContext context) {
-            return CustomerPage(mockFoodItem);
-          }));
+          Navigator.pushNamed(context, customerPageRoute);
         },
       ),
     );
