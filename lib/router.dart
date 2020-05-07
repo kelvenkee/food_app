@@ -14,6 +14,7 @@ import 'package:food_app/food_detail.dart';
 import 'package:food_app/splashscreen.dart';
 import 'package:food_app/models/mockdata.dart';
 
+import 'Menu/edit_menu.dart';
 import 'cart.dart';
 
 Route<dynamic> createRoute(settings) {
@@ -39,6 +40,10 @@ Route<dynamic> createRoute(settings) {
       return MaterialPageRoute(
           settings: RouteSettings(name: view_menuRoute),
           builder: (context) => ViewMenu(arguments));
+    case edit_menuRoute:
+      return MaterialPageRoute(
+          settings: RouteSettings(name: edit_menuRoute),
+          builder: (context) => EditMenu(arguments));
     case view_orderRoute:
       return MaterialPageRoute(
           settings: RouteSettings(name: view_orderRoute),
