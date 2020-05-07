@@ -3,6 +3,7 @@ import 'package:food_app/constant.dart';
 
 class CustomerPage extends StatefulWidget {
   final List _foodItems;
+
   CustomerPage(this._foodItems);
   @override
   _CustomerPageState createState() => _CustomerPageState();

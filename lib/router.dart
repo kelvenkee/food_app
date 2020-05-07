@@ -14,6 +14,8 @@ import 'package:food_app/food_detail.dart';
 import 'package:food_app/splashscreen.dart';
 import 'package:food_app/models/mockdata.dart';
 
+import 'cart.dart';
+
 Route<dynamic> createRoute(settings) {
   final arguments = settings.arguments;
   switch (settings.name) {
@@ -65,6 +67,10 @@ Route<dynamic> createRoute(settings) {
       return MaterialPageRoute(
           settings: RouteSettings(name: food_detailRoute),
           builder: (context) => FoodDetail(arguments));
+    case cartRoute:
+      return MaterialPageRoute(
+          settings: RouteSettings(name: cartRoute),
+          builder: (context) => Cart(arguments));
   }
   return null;
 }

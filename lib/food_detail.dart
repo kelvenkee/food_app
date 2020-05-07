@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/models/fooditem.dart';
+import 'package:food_app/models/order.dart';
+import 'package:food_app/models/orderitem.dart';
+
+import 'constant.dart';
 
 class FoodDetail extends StatefulWidget {
   final FoodItem _foodItems;
@@ -92,7 +96,16 @@ class _FoodDetailState extends State<FoodDetail> {
               children: <Widget>[
                 Expanded(
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      List<OrderItem> myList = List<OrderItem>(); // problem zzz
+                      print(_quantity);
+                      myList.add(OrderItem(
+                          fooditem: widget._foodItems,
+                          quantity: _quantity,
+                          orderItemStatus: "abc"));
+                      Navigator.pushNamed(context, cartRoute,
+                          arguments: myList);
+                    },
                     padding: EdgeInsets.symmetric(vertical: 16),
                     color: Colors.deepOrangeAccent,
                     shape: RoundedRectangleBorder(

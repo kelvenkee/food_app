@@ -7,10 +7,13 @@ class Order {
   String orderStatus; // either In Process or Completed
   Customer customer;
 
-  Order({this.items, this.type,this.customer, this.orderStatus});
+  Order({this.items, this.type, this.customer, this.orderStatus});
   Order.copy(Order from)
-      : this(items: from.items.map((items) => OrderItem.copy(items)).toList(),
-            type:from.type, customer:from.customer, orderStatus: from.orderStatus);
+      : this(
+            items: from.items.map((items) => OrderItem.copy(items)).toList(),
+            type: from.type,
+            customer: from.customer,
+            orderStatus: from.orderStatus);
 
   int get totalItem => (items.fold(0, (sum, item) => sum + item.quantity));
   double get totalPrice => (items.fold(

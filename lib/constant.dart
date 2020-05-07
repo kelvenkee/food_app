@@ -10,3 +10,4 @@ const String settingRoute = '/setting';
 const String splashScreenRoute = '/splashscreen';
 const String customerPageRoute = '/customer_page';
 const String food_detailRoute = '/food_detail';
+const String cartRoute = '/cart';
