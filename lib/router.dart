@@ -9,13 +9,12 @@ import 'package:food_app/Settings/profile_page.dart';
 import 'package:food_app/Settings/setting.dart';
 import 'package:food_app/Settings/setting_password.dart';
 import 'package:food_app/constant.dart';
-import 'package:food_app/customer_page.dart';
-import 'package:food_app/food_detail.dart';
+import 'package:food_app/Customer/customer_page.dart';
+import 'package:food_app/Customer/food_detail.dart';
 import 'package:food_app/splashscreen.dart';
 import 'package:food_app/models/mockdata.dart';
-
 import 'Menu/edit_menu.dart';
-import 'cart.dart';
+import 'package:food_app/Customer/cart.dart';
 
 Route<dynamic> createRoute(settings) {
   final arguments = settings.arguments;
