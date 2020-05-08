@@ -1,4 +1,4 @@
-import 'package:food_app/models/table.dart';
+import 'diningtable.dart';
 
 import 'customer.dart';
 import 'order.dart';
@@ -167,33 +167,33 @@ List<OrderItem> mockOrderItem4 = [
   OrderItem(fooditem: mockFoodItem[7], quantity: 1),
 ];
 
-List<Table> mockTable = [
-  Table(
+List<DiningTable> mockTable = [
+  DiningTable(
       order: mockOrder[0],
       customer: mockCustomer[0],
       tableStatus: "Occupied",
       tableImageName: "assets/table_red.png"),
-  Table(
+  DiningTable(
       order: mockOrder[1],
       customer: mockCustomer[1],
       tableStatus: "Occupied",
       tableImageName: "assets/table_red.png"),
-  Table(
+  DiningTable(
       order: null,
       customer: null,
       tableStatus: "Empty",
       tableImageName: "assets/table_green.png"),
-  Table(
+  DiningTable(
       order: null,
       customer: null,
       tableStatus: "Empty",
       tableImageName: "assets/table_green.png"),
-  Table(
-      order: mockOrder[2],
-      customer: mockCustomer[3],
+  DiningTable(
+      order: null,
+      customer: null,
       tableStatus: "Cleaning",
       tableImageName: "assets/table_yellow.png"),
-  Table(
+  DiningTable(
       order: null,
       customer: null,
       tableStatus: "Empty",

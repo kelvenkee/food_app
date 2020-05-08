@@ -20,20 +20,27 @@ class _ViewOrderState extends State<ViewOrder> {
       ),
       body: ListView.separated(
         itemCount: widget._order.length,
-        itemBuilder: (context, index) => ListTile(
+        itemBuilder: (context, index) => new Container(
+          decoration: new BoxDecoration (
+                color: this.widget._order[index].orderStatus=="Completed"? Colors.red[200]:Colors.green[200],
+            ),
+          
+          child: ListTile(
           contentPadding: const EdgeInsets.all(5.0),
+          
           title: Text("Order #" + (index + 1).toString(),
               style: TextStyle(
-                  color: Colors.orange[900],
+                  color: Colors.black,
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold)),
           subtitle: Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
             child: Column(
+            
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    widget._order[index].orderStatus,
+                    widget._order[index].type,
                     style: TextStyle(
                       color: Colors.black54,
                       fontSize: 18.0,
@@ -53,26 +60,43 @@ class _ViewOrderState extends State<ViewOrder> {
                   ),
                 ]),
           ),
-          trailing: Container(
-            height: 80.0,
-            width: 80.0,
-            child: Icon(Icons.check_circle_outline,
-                color: this.widget._order[index].orderStatus == "Completed"
-                    ? Colors.red
-                    : Colors.green),
-          ),
-          onTap: () => {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => OrderDetail(widget._order[index],index)),
-            )
-          },
-        ),
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.blueGrey,
-        ),
-      ),
-    );
-  }
+          trailing: Column(children: <Widget>[
+            Icon(orderStatusIcon(this.widget._order[index].orderStatus),
+                            color: this.widget._order[index].orderStatus == "Completed"
+                                ? Colors.red[800]
+                                : Colors.green[800]),
+                        Text(
+                          widget._order[index].orderStatus,
+                          style: TextStyle(
+                            color: widget._order[index].orderStatus == "Completed"
+                                ? Colors.red[800]
+                                : Colors.green[800],
+                            fontSize: 13.0,
+                          ),
+                        )
+                      ]),
+                      onTap: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  OrderDetail(widget._order[index], index)),
+                        )
+                      },
+                    ),
+                    ),
+                    separatorBuilder: (context, index) => Divider(
+                      color: Colors.blueGrey,
+                    ),
+                  ),
+                );
+              }
+            
+              IconData orderStatusIcon(String status) {
+                if (status=="Completed") {
+                  return Icons.check_circle_outline;
+                } else {
+                  return Icons.schedule;
+                }
+              }
 }

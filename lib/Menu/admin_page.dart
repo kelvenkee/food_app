@@ -239,7 +239,7 @@ class _TableItemsState extends State<TableItems> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => TableOrderDetail(mockTable[widget._index].order, widget._index + 1) ),
+                  builder: (context) => TableOrderDetail(mockTable[widget._index], widget._index + 1) ),
             );
           },
         ),
