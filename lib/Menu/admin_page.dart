@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/constant.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:food_app/models/diningtable.dart';
 import 'package:food_app/models/mockdata.dart';
 
 import '../models/mockdata.dart';
@@ -178,6 +179,18 @@ class TableItems extends StatefulWidget {
 }
 
 class _TableItemsState extends State<TableItems> {
+  void _navigate(index) async {
+    final DiningTable returnData = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TableOrderDetail(DiningTable.copy(mockTable[widget._index]), widget._index + 1)
+      ),
+    );
+
+    if (returnData != null) {
+      setState(() => mockTable[widget._index] = returnData);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -236,11 +249,7 @@ class _TableItemsState extends State<TableItems> {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => TableOrderDetail(mockTable[widget._index], widget._index + 1) ),
-            );
+            _navigate(widget._index);
           },
         ),
       ]),

@@ -76,7 +76,7 @@ List<FoodItem> mockFoodItem = [
       foodName: "Milo Dinosaur",
       foodDescription:
           "A Malaysian beverage, composed of a cup of iced Milo with undissolved Milo powder added on top of it.",
-      unitPrice: 25.0,
+      unitPrice: 8.70,
       imageName: 'assets/fooditemsimage/fooditemsimage9.jpg'),
   FoodItem(
       //mockFoodItem[9]
@@ -84,7 +84,7 @@ List<FoodItem> mockFoodItem = [
       foodName: "Cendol with Musang King Durian",
       foodDescription:
           "Iced sweet dessert with droplets of green rice flour jelly, coconut milk and palm sugar syrup. Comes together with Musang King Durian",
-      unitPrice: 3.90,
+      unitPrice: 9.90,
       imageName: 'assets/fooditemsimage/fooditemsimage10.jpg'),
 ];
 
@@ -116,32 +116,37 @@ List<Order> mockOrder = [
       items: mockOrderItem0,
       type: "Dine In",
       customer: mockCustomer[0],
-      orderStatus: "In Process"),
+      orderStatus: "In Process",
+      orderID: 1),
   Order(
       items: mockOrderItem1,
       type: "Dine In",
       customer: mockCustomer[1],
-      orderStatus: "In Process"),
+      orderStatus: "In Process",
+      orderID:2),
   Order(
       items: mockOrderItem2,
       type: "Dine In",
       customer: mockCustomer[3],
-      orderStatus: "Completed"),
+      orderStatus: "Completed",
+      orderID:3),
   Order(
       items: mockOrderItem3,
       type: "Take Away",
       customer: mockCustomer[2],
-      orderStatus: "Completed"),
+      orderStatus: "Completed",
+      orderID:4),
   Order(
       items: mockOrderItem4,
       type: "Take Away",
       customer: mockCustomer[3],
-      orderStatus: "In Process"),
+      orderStatus: "In Process",
+      orderID:5),
 ];
 
 List<OrderItem> mockOrderItem0 = [
   OrderItem(fooditem: mockFoodItem[0], quantity: 1),
-  OrderItem(fooditem: mockFoodItem[8], quantity: 1),
+  OrderItem(fooditem: mockFoodItem[8], quantity: 3),
   OrderItem(fooditem: mockFoodItem[5], quantity: 1),
 ];
 

@@ -19,40 +19,14 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
       appBar: AppBar(
         backgroundColor: Colors.deepOrangeAccent,
         centerTitle: true,
-        title: Text("Order Detail for Table " + widget._index.toString()),
+        title: appBarTitle(),
       ),
       body: buildTableListview(),
+      floatingActionButton: actionbutton(),
     );
   }
 
-  Future<void> _showTotal() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Total Price'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text(returnTotalAmount(widget._table.order.items)),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-//to delete item
+  //to delete item
   void deleteFood(OrderItem orderItem) {
     return setState(() {
       removeFromList(orderItem);
@@ -61,62 +35,100 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
 
   Widget buildTableListview() {
     if (widget._table.order != null) {
-      return ListView.separated(
-        itemCount: widget._table.order.items.length,
-        itemBuilder: (context, index) => ListTile(
-          onTap: () {
-            _showTotal();
-          },
-          onLongPress: () {
-            deleteFood(widget._table.order.items[index]);
-          },
-          contentPadding: const EdgeInsets.all(5.0),
-          leading: Container(
-            height: 80.0,
-            width: 80.0,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(
-                  widget._table.order.items[index].fooditem.imageName,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.center),
-            ),
+      return Column(
+        children: <Widget>[
+          Divider(
+            color: Colors.grey,
+            height: 20,
+            thickness: 3,
+            indent: 0,
+            endIndent: 0,
           ),
-          title: Text(widget._table.order.items[index].fooditem.foodName,
-              style: TextStyle(
-                  color: Colors.orange[900],
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold)),
-          subtitle: Padding(
-            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "x" + widget._table.order.items[index].quantity.toString(),
-                    // " Total is :" +
-                    // returnTotalAmount(orderItems),
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 15.0,
-                    ),
-                    textAlign: TextAlign.justify,
+          Text("Customer: "+widget._table.order.customer.firstname+" "+widget._table.order.customer.lastname,textAlign: TextAlign.right,),
+           Divider(
+            color: Colors.grey,
+            height: 20,
+            thickness: 3,
+            indent: 0,
+            endIndent: 0,
+          ),
+          ListView.separated(
+            shrinkWrap: true,
+            itemCount: widget._table.order.items.length,
+            itemBuilder: (context, index) => ListTile(
+              onLongPress: () {
+                deleteFood(widget._table.order.items[index]);
+              },
+              contentPadding: const EdgeInsets.all(5.0),
+              leading: Container(
+                  height: 80.0,
+                  width: 80.0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(widget._table.order.items[index].fooditem.imageName,
+                        fit: BoxFit.cover, alignment: Alignment.center),
                   ),
-                ]),
-          ),
-          trailing: Container(
-            width: 55.0,
-            child: Text(
-              // this is the total price for each food , quantity * unit price
-              'MYR ' +
-                  ((widget._table.order.items[index].fooditem.unitPrice *
-                          widget._table.order.items[index].quantity).toString()),
+                ),
+              title: Text(widget._table.order.items[index].fooditem.foodName,
+                  style: TextStyle(
+                      color: Colors.orange[900],
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold)),
+              subtitle: Padding(
+                padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "x" +
+                            widget._table.order.items[index].quantity.toString() +
+                            "  (RM" +
+                            widget._table.order.items[index].fooditem.unitPrice
+                                .toStringAsFixed(2) +
+                            ")",
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 15.0,
+                        ),
+                        textAlign: TextAlign.justify,
+                      ),
+                    ]),
+              ),
+              trailing: Container(
+                width: 55.0,
+                child: Text(
+                  // this is the total price for each food , quantity * unit price
+                  'MYR ' +
+                      ((widget._table.order.items[index].fooditem.unitPrice *
+                              widget._table.order.items[index].quantity)
+                          .toStringAsFixed(2)),textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+            separatorBuilder: (context, index) => Divider(
+              color: Colors.blueGrey,
             ),
           ),
-        ),
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.blueGrey,
-        ),
+          
+           Divider(
+            color: Colors.grey,
+            height: 20,
+            thickness: 3,
+            indent: 0,
+            endIndent: 0,
+          ),
+          
+          Text("Total Quantity: "+widget._table.order.totalItem.toString(),textAlign: TextAlign.right,),
+          Text("Total Price: MYR"+widget._table.order.totalPrice.toStringAsFixed(2),textAlign: TextAlign.right,),
+           Divider(
+            color: Colors.grey,
+            height: 20,
+            thickness: 3,
+            indent: 0,
+            endIndent: 0,
+          ),
+        ],
+        
       );
     } else if (widget._table.tableStatus == "Empty") {
       return Column(children: <Widget>[
@@ -180,13 +192,58 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 12,
-                
               ),
             ),
-            onPressed: () => setState(() => widget._table.tableStatus = "Empty"),
+            onPressed: () {
+              setState(() {
+                widget._table.tableStatus = "Empty";
+                widget._table.tableImageName = "assets/table_green.png";
+              });
+              Navigator.of(context).pop(widget._table);
+            },
           )
         ],
       );
+    }
+  }
+
+  actionbutton() {
+    if (widget._table.tableStatus == "Occupied") {
+      return Stack(
+        children: <Widget>[
+          FloatingActionButton.extended(
+            onPressed: () {
+              setState(() {
+                widget._table.tableStatus = "Cleaning";
+                widget._table.tableImageName = "assets/table_yellow.png";
+
+                widget._table.order.orderStatus = "Completed";
+                widget._table.order = null;
+              });
+              Navigator.of(context).pop(widget._table);
+            },
+            label: Text('Cleaning Table'),
+            icon: Icon(Icons.done),
+            backgroundColor: Colors.deepOrangeAccent,
+          )
+        ],
+      );
+    } else {
+      return null;
+    }
+  }
+
+  appBarTitle() {
+    if (widget._table.tableStatus == "Occupied") {
+      return Text(
+        "Table " +
+            widget._index.toString() +
+            "\nOrder #" +
+            widget._table.order.orderID.toString(),
+        textAlign: TextAlign.center,
+      );
+    } else {
+      return Text("Table " + widget._index.toString());
     }
   }
 }
