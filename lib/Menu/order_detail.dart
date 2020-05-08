@@ -15,102 +15,145 @@ class _OrderDetail extends State<OrderDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepOrangeAccent,
-        centerTitle: true,
-        title: Text("Order Detail for Order " + (widget._index + 1).toString()),
-      ),
-      body: ListView.separated(
-        itemCount: widget._order.items.length,
-        itemBuilder: (context, index) => ListTile(
-          onTap: () {
-            _showTotal();
-          },
-          onLongPress: () {
-            deleteFood(widget._order.items[index]);
-          },
-          contentPadding: const EdgeInsets.all(5.0),
-          leading: Container(
-            height: 80.0,
-            width: 80.0,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(widget._order.items[index].fooditem.imageName,
-                  fit: BoxFit.cover, alignment: Alignment.center),
-            ),
-          ),
-          title: Text(widget._order.items[index].fooditem.foodName,
-              style: TextStyle(
-                  color: Colors.orange[900],
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold)),
-          subtitle: Padding(
-            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "x" + widget._order.items[index].quantity.toString(),
-                    // " Total is :" +
-                    // returnTotalAmount(orderItems),
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 15.0,
-                    ),
-                    textAlign: TextAlign.justify,
-                  ),
-                ]),
-          ),
-          trailing: Container(
-            width: 55.0,
-            child: Text(
-              // this is the total price for each food , quantity * unit price
-              'MYR ' + ((widget._order.items[index].fooditem.unitPrice*widget._order.items[index].quantity).toString()),
-            ),
-          ),
+        appBar: AppBar(
+          backgroundColor: Colors.deepOrangeAccent,
+          centerTitle: true,
+          title:
+              Text("Order Detail for Order " + (widget._index + 1).toString()),
         ),
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.blueGrey,
-        ),
-      ),
-      floatingActionButton: Stack(
+        body: Column(
           children: <Widget>[
-            FloatingActionButton.extended(              
-              onPressed: null,
-              label: Text('Order Done'),
+            Divider(
+              color: Colors.grey,
+              height: 20,
+              thickness: 3,
+              indent: 0,
+              endIndent: 0,
+            ),
+            Text(
+              "Customer: " +
+                  widget._order.customer.firstname +
+                  " " +
+                  widget._order.customer.lastname,
+              textAlign: TextAlign.right,
+            ),
+            Divider(
+              color: Colors.grey,
+              height: 20,
+              thickness: 3,
+              indent: 0,
+              endIndent: 0,
+            ),
+            ListView.separated(
+              shrinkWrap: true,
+              itemCount: widget._order.items.length,
+              itemBuilder: (context, index) => ListTile(
+                onLongPress: () {
+                  deleteFood(widget._order.items[index]);
+                },
+                contentPadding: const EdgeInsets.all(5.0),
+                leading: Container(
+                  height: 80.0,
+                  width: 80.0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                        widget._order.items[index].fooditem.imageName,
+                        fit: BoxFit.cover,
+                        alignment: Alignment.center),
+                  ),
+                ),
+                title: Text(widget._order.items[index].fooditem.foodName,
+                    style: TextStyle(
+                        color: Colors.orange[900],
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold)),
+                subtitle: Padding(
+                  padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "x" +
+                              widget._order.items[index].quantity.toString() +
+                              "  (RM" +
+                              widget._order.items[index].fooditem.unitPrice
+                                  .toStringAsFixed(2) +
+                              ")",
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 15.0,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ]),
+                ),
+                trailing: Container(
+                  width: 55.0,
+                  child: Text(
+                    // this is the total price for each food , quantity * unit price
+                    'MYR ' +
+                        ((widget._order.items[index].fooditem.unitPrice *
+                                widget._order.items[index].quantity)
+                            .toStringAsFixed(2)),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              separatorBuilder: (context, index) => Divider(
+                color: Colors.blueGrey,
+              ),
+            ),
+            Divider(
+              color: Colors.grey,
+              height: 20,
+              thickness: 3,
+              indent: 0,
+              endIndent: 0,
+            ),
+            Text(
+              "Total Quantity: " + widget._order.totalItem.toString(),
+              textAlign: TextAlign.right,
+            ),
+            Text(
+              "Total Price: MYR" + widget._order.totalPrice.toStringAsFixed(2),
+              textAlign: TextAlign.right,
+            ),
+            Text(
+              "Status: " + widget._order.orderStatus,
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                color: widget._order.orderStatus == "Completed"
+                    ? Colors.red[800]
+                    : Colors.green[500],
+                fontSize: 13.0,
+                fontWeight: FontWeight.bold
+              ),
+            ),
+            Divider(
+              color: Colors.grey,
+              height: 20,
+              thickness: 3,
+              indent: 0,
+              endIndent: 0,
+            ),
+          ],
+        ),
+        floatingActionButton: Stack(
+          children: <Widget>[
+            FloatingActionButton.extended(
+              onPressed: () {
+                setState(() {
+                  widget._order.orderStatus = "Completed";
+                });
+                Navigator.of(context).pop(widget._order);
+              },
+              label: Text('Order Complete'),
               icon: Icon(Icons.done),
-              backgroundColor: Colors.green[400],
+              backgroundColor: Colors.deepOrangeAccent,
             )
           ],
-        )
-    );
-  }
-
-  Future<void> _showTotal() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Total Price'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text(returnTotalAmount(widget._order.items)),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
+        ));
   }
 
 //to delete item

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/constant.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:food_app/models/diningtable.dart';
 import 'package:food_app/models/mockdata.dart';
 
 import '../models/mockdata.dart';
@@ -77,21 +78,6 @@ class AdminPage extends StatelessWidget {
       )),
       body: ListView(
         children: <Widget>[
-          Padding(
-              padding: const EdgeInsets.only(top: 1.0, left: 1.0),
-              child: ListTile(
-                title: Text('Menu',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22.0)),
-                trailing:
-                    Icon(Icons.keyboard_arrow_right, color: Colors.blueGrey),
-                onTap: () {
-                  Navigator.pushNamed(context, view_menuRoute,
-                      arguments: mockFoodItem);
-                },
-              )),
           Container(
             height: 225.0,
             child: Carousel(
@@ -115,20 +101,80 @@ class AdminPage extends StatelessWidget {
           Padding(
               padding: const EdgeInsets.only(top: 1.0, left: 1.0),
               child: ListTile(
-                title: Text('Orders',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22.0)),
-                trailing: Text('View All',
-                    style: TextStyle(
-                        color: Colors.blueGrey,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12.0)),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text('Menu',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22.0)),
+                    Row(children: <Widget>[
+                      Text('View All',
+                          style: TextStyle(
+                              color: Colors.blueGrey,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12.0)),
+                      Icon(Icons.keyboard_arrow_right, color: Colors.blueGrey),
+                    ])
+                  ],
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, view_menuRoute,
+                      arguments: mockFoodItem);
+                },
+              )),
+          Divider(
+            color: Colors.grey,
+            height: 5,
+            thickness: 3,
+            indent: 0,
+            endIndent: 0,
+          ),
+          Padding(
+              padding: const EdgeInsets.only(top: 1.0, left: 1.0),
+              child: ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text('Orders',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22.0)),
+                    Row(
+                      children: <Widget>[
+                        Text('View All',
+                            style: TextStyle(
+                                color: Colors.blueGrey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12.0)),
+                        Icon(Icons.keyboard_arrow_right,
+                            color: Colors.blueGrey),
+                      ],
+                    ),
+                  ],
+                ),
                 onTap: () {
                   Navigator.pushNamed(context, view_orderRoute,
                       arguments: mockOrder);
                 },
+              )),
+          Divider(
+            color: Colors.grey,
+            height: 5,
+            thickness: 3,
+            indent: 0,
+            endIndent: 0,
+          ),
+          Padding(
+              padding: const EdgeInsets.only(top: 1.0, left: 1.0),
+              child: ListTile(
+                title: Text('Tables',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22.0)),
               )),
           GridView.count(
             crossAxisCount: 3,
@@ -178,6 +224,19 @@ class TableItems extends StatefulWidget {
 }
 
 class _TableItemsState extends State<TableItems> {
+  void _navigate(index) async {
+    final DiningTable returnData = await Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => TableOrderDetail(
+              DiningTable.copy(mockTable[widget._index]), widget._index + 1)),
+    );
+
+    if (returnData != null) {
+      setState(() => mockTable[widget._index] = returnData);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -236,11 +295,7 @@ class _TableItemsState extends State<TableItems> {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => TableOrderDetail(mockTable[widget._index], widget._index + 1) ),
-            );
+            _navigate(widget._index);
           },
         ),
       ]),
