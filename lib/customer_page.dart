@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/constant.dart';
+import 'package:badges/badges.dart';
+import 'package:food_app/models/orderitem.dart';
 
 class CustomerPage extends StatefulWidget {
   final List _foodItems;
@@ -19,13 +21,24 @@ class _CustomerPageState extends State<CustomerPage> {
         centerTitle: true,
         title: Text('Menu'),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.pushNamed(context, cartRoute);
-            },
-            tooltip: 'Checkout',
-          )
+          Badge(
+            position: BadgePosition.topRight(top: 0, right: 3),
+            badgeContent: Text(orderItems.length.toString()),
+            child: IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {
+                Navigator.pushNamed(context, cartRoute);
+              },
+              tooltip: 'Checkout',
+            ),
+          ),
+          // IconButton(
+          //   icon: Icon(Icons.shopping_cart),
+          //   onPressed: () {
+          //     Navigator.pushNamed(context, cartRoute);
+          //   },
+          //   tooltip: 'Checkout',
+          // )
         ],
       ),
       body: ListView.separated(
