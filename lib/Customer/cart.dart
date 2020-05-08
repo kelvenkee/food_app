@@ -60,7 +60,8 @@ class _CartState extends State<Cart> {
               width: 55.0,
               child: Text(
                 // this is the total price for each food , quantity * unit price
-                'MYR ' + (orderItems[index].fooditem.totalItem.toString()),
+                'MYR ' +
+                    (orderItems[index].fooditem.totalItem.toStringAsFixed(2)),
               ),
             ),
           ),
@@ -71,7 +72,7 @@ class _CartState extends State<Cart> {
         floatingActionButton: Stack(
           children: <Widget>[
             FloatingActionButton.extended(
-              onPressed: null,
+              onPressed: () => _showTotal(),
               label: Text('Confirm Order'),
               icon: Icon(Icons.done),
               backgroundColor: Colors.deepOrangeAccent,
@@ -90,7 +91,7 @@ class _CartState extends State<Cart> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(returnTotalAmount(orderItems)),
+                Text("MYR " + returnTotalAmount(orderItems)),
               ],
             ),
           ),
