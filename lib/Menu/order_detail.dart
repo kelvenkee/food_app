@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 
 import '../models/order.dart';
 
-class TableOrderDetail extends StatefulWidget {
+class OrderDetail extends StatefulWidget {
   final Order _order;
   final int _index;
-  TableOrderDetail(this._order,this._index);
+  OrderDetail(this._order,this._index);
   @override
-  _TableOrderDetailState createState() => _TableOrderDetailState();
+  _OrderDetail createState() => _OrderDetail();
 }
 
-class _TableOrderDetailState extends State<TableOrderDetail> {
+class _OrderDetail extends State<OrderDetail> {
   @override
   Widget build(BuildContext context) {
     
@@ -19,7 +19,7 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
       appBar: AppBar(
         backgroundColor: Colors.deepOrangeAccent,
         centerTitle: true,
-        title: Text("Order Detail for Table "+widget._index.toString()),
+        title: Text("Order Detail for Order "+ (widget._index+1).toString()),
       ),
     );
   }

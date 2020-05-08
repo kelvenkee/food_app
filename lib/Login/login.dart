@@ -17,7 +17,9 @@ class _LoginState extends State<Login> {
             buildColumn(context),
           ],
         ),
+        
       ),
+      bottomNavigationBar: _Employee(),
     );
   }
 
@@ -42,7 +44,7 @@ class _LoginState extends State<Login> {
         SizedBox(
           height: 25,
         ),
-        _Employee(),
+        
       ],
     );
   }
@@ -59,11 +61,24 @@ class _Employee extends StatelessWidget {
       width: double.infinity,
       child: RaisedButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(0),
         color: Colors.white,
-        child: Text(
-          "Employee",
-          style: TextStyle(color: Colors.deepOrangeAccent[400]),
+        child: Text.rich(
+          TextSpan(
+            text: 'Log in as  ',
+            style: TextStyle(fontSize: 14),
+            children: <TextSpan>[
+              TextSpan(
+                  text: 'employee',
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                  )),
+              TextSpan(
+                text: '?',
+                style: TextStyle(fontSize: 14),
+              ),
+            ],
+          ),
         ),
         onPressed: () {
           Navigator.pushNamed(
@@ -84,14 +99,17 @@ class _Customers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: null,
       child: RaisedButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+        shape: RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(28.0),
+          side: BorderSide(color: Colors.black),
+        ),
         padding: const EdgeInsets.all(16.0),
-        color: Colors.white,
+        color: Colors.red[300],
         child: Text(
-          "Customers",
-          style: TextStyle(color: Colors.deepOrangeAccent[400]),
+          "Let's Start Order",
+          style: TextStyle(color: Colors.white,fontSize: 24),
         ),
         onPressed: () {
           Navigator.pushNamed(context, customerPageRoute);

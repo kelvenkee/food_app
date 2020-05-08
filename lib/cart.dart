@@ -105,4 +105,13 @@ class _CartState extends State<Cart> {
   }
 // for total price of all food , the code is
 //
+<<<<<<< HEAD
+=======
+
+//to delete item
+void deleteFood(OrderItem orderItem) {
+  return setState(() {
+    removeFromList(orderItem);
+  });
+>>>>>>> 86a713f93ec402d7455852737dd91d97357bdbf4
 }

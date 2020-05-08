@@ -129,7 +129,7 @@ List<Order> mockOrder = [
       orderStatus: "Completed"),
   Order(
       items: mockOrderItem3,
-      type: "Delivery",
+      type: "Take Away",
       customer: mockCustomer[2],
       orderStatus: "Completed"),
   Order(
