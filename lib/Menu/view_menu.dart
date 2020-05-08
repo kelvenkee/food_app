@@ -105,7 +105,7 @@ class _ViewMenuState extends State<ViewMenu> {
           itemCount: widget._foodItems.length),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, create_menuRoute); //createMEnu(0) <---error?
+          Navigator.pushNamed(context, create_menuRoute); 
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.deepOrangeAccent,

@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/models/fooditem.dart';
 import 'package:food_app/models/mockdata.dart';
-
+// import 'package:image_picker/image_picker.dart';
+// import 'dart:io';
 class CreateMenu extends StatefulWidget {
   CreateMenu();
   @override
@@ -26,22 +27,29 @@ class _CreateMenuState extends State<CreateMenu> {
               backgroundColor: Colors.deepOrangeAccent,
               centerTitle: true,
               title: Text("Create Menu"),
+              
             ),
             body: Column(children: <Widget>[
               SizedBox(height: 20),
-              _buildImage(),
+              _showImage(),
+              RaisedButton(
+                child: Text("Select Image from Gallery"),
+                onPressed: (){
+                },
+              ),
               _buildBody(),
             ])));
   }
 
-  Widget _buildImage() {
+
+  Widget _showImage() {
     return Container(
-      height: 150,
+      height: 100,
       width: 200,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
         child: Image.asset(
-          "assets/fooditemsimage/fooditemsimage1.jpg",
+          "assets/sample_image2.png",
           fit: BoxFit.cover,
         ),
       ),
@@ -113,26 +121,15 @@ class _CreateMenuState extends State<CreateMenu> {
                   heroTag: null,
                   icon: Icon(Icons.check_circle),
                   label: Text("Save"),
-                  // onPressed: ()=> Navigator.pop(context, widget._foodItems) ,
                   onPressed: () {
-                    // FoodItem mockFoodItem= new FoodItem(
-                    //   foodID: "11",
-                    //   foodName: "widget._foodItems.foodName " ,
-                    //   foodDescription: "widget._foodItems.foodDescription" ,
-                    //   unitPrice: 99,
-                    //   imageName: "assets/fooditemsimage/fooditemsimage1.jpg",
-                    //   );
-                    //   createFoodMenu(mockFoodItem);
-                    //   Navigator.pop(context, FoodItem);
-                    String foodId =
-                        getId(mockFoodItem[mockFoodItem.length - 1].foodID);
-                    FoodItem tempFood = new FoodItem(
+                    String foodId = getId(mockFoodItem[mockFoodItem.length - 1].foodID);
+                    FoodItem newFood = new FoodItem(
                         foodID: foodId,
                         foodName: foodName,
                         foodDescription: foodDescription,
                         unitPrice: unitPrice,
-                        imageName: "test");
-                    mockFoodItem.add(tempFood);
+                        imageName: "assets/sample_image2.png");
+                    mockFoodItem.add(newFood);
                     Navigator.pop(context);
                   },
                   backgroundColor: Colors.deepOrangeAccent,
