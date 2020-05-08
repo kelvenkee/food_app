@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../models/order.dart';
 import 'order_detail.dart';
 
 class ViewOrder extends StatefulWidget {
@@ -11,6 +12,19 @@ class ViewOrder extends StatefulWidget {
 }
 
 class _ViewOrderState extends State<ViewOrder> {
+void _navigate(_order,_index) async {
+    final Order returnData = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => OrderDetail(Order.copy(_order), _index + 1)
+      ),
+    );
+
+    if (returnData != null) {
+      setState(() => widget._order[_index] = returnData);
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -76,12 +90,7 @@ class _ViewOrderState extends State<ViewOrder> {
                         )
                       ]),
                       onTap: () => {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  OrderDetail(widget._order[index], index)),
-                        )
+                        _navigate(widget._order[index], index)
                       },
                     ),
                     ),

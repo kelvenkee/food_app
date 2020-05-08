@@ -44,8 +44,14 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
             indent: 0,
             endIndent: 0,
           ),
-          Text("Customer: "+widget._table.order.customer.firstname+" "+widget._table.order.customer.lastname,textAlign: TextAlign.right,),
-           Divider(
+          Text(
+            "Customer: " +
+                widget._table.order.customer.firstname +
+                " " +
+                widget._table.order.customer.lastname,
+            textAlign: TextAlign.right,
+          ),
+          Divider(
             color: Colors.grey,
             height: 20,
             thickness: 3,
@@ -61,14 +67,16 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
               },
               contentPadding: const EdgeInsets.all(5.0),
               leading: Container(
-                  height: 80.0,
-                  width: 80.0,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset(widget._table.order.items[index].fooditem.imageName,
-                        fit: BoxFit.cover, alignment: Alignment.center),
-                  ),
+                height: 80.0,
+                width: 80.0,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset(
+                      widget._table.order.items[index].fooditem.imageName,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.center),
                 ),
+              ),
               title: Text(widget._table.order.items[index].fooditem.foodName,
                   style: TextStyle(
                       color: Colors.orange[900],
@@ -81,7 +89,8 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
                     children: <Widget>[
                       Text(
                         "x" +
-                            widget._table.order.items[index].quantity.toString() +
+                            widget._table.order.items[index].quantity
+                                .toString() +
                             "  (RM" +
                             widget._table.order.items[index].fooditem.unitPrice
                                 .toStringAsFixed(2) +
@@ -101,7 +110,8 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
                   'MYR ' +
                       ((widget._table.order.items[index].fooditem.unitPrice *
                               widget._table.order.items[index].quantity)
-                          .toStringAsFixed(2)),textAlign: TextAlign.center,
+                          .toStringAsFixed(2)),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),
@@ -109,18 +119,33 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
               color: Colors.blueGrey,
             ),
           ),
-          
-           Divider(
+          Divider(
             color: Colors.grey,
             height: 20,
             thickness: 3,
             indent: 0,
             endIndent: 0,
           ),
-          
-          Text("Total Quantity: "+widget._table.order.totalItem.toString(),textAlign: TextAlign.right,),
-          Text("Total Price: MYR"+widget._table.order.totalPrice.toStringAsFixed(2),textAlign: TextAlign.right,),
-           Divider(
+          Text(
+            "Total Quantity: " + widget._table.order.totalItem.toString(),
+            textAlign: TextAlign.right,
+          ),
+          Text(
+            "Total Price: MYR" +
+                widget._table.order.totalPrice.toStringAsFixed(2),
+            textAlign: TextAlign.right,
+          ),
+          Text(
+            "Status: " + widget._table.order.orderStatus,
+            textAlign: TextAlign.right,
+            style: TextStyle(
+                color: widget._table.order.orderStatus == "Completed"
+                    ? Colors.red[800]
+                    : Colors.green[500],
+                fontSize: 13.0,
+                fontWeight: FontWeight.bold),
+          ),
+          Divider(
             color: Colors.grey,
             height: 20,
             thickness: 3,
@@ -128,7 +153,6 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
             endIndent: 0,
           ),
         ],
-        
       );
     } else if (widget._table.tableStatus == "Empty") {
       return Column(children: <Widget>[
