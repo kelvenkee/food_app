@@ -21,6 +21,9 @@ class _CartState extends State<Cart> {
             onTap: () {
               _showTotal();
             },
+            onLongPress: () {
+              deleteFood(orderItems[index]);
+            },
             contentPadding: const EdgeInsets.all(5.0),
             leading: Container(
               height: 80.0,
@@ -103,15 +106,11 @@ class _CartState extends State<Cart> {
       },
     );
   }
-// for total price of all food , the code is
-//
-<<<<<<< HEAD
-=======
 
 //to delete item
-void deleteFood(OrderItem orderItem) {
-  return setState(() {
-    removeFromList(orderItem);
-  });
->>>>>>> 86a713f93ec402d7455852737dd91d97357bdbf4
+  void deleteFood(OrderItem orderItem) {
+    return setState(() {
+      removeFromList(orderItem);
+    });
+  }
 }
