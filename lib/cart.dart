@@ -60,8 +60,8 @@ class _CartState extends State<Cart> {
 //
 
 //to delete item
-void deleteFood(OrderItem orderItem) {
-  return setState(() {
-    removeFromList(orderItem);
-  });
-}
+// void deleteFood(OrderItem orderItem) {
+//   return setState(() {
+//     removeFromList(orderItem);
+//   });
+// }

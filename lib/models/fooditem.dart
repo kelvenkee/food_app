@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 
-List<FoodItem> foodItems;
+List<FoodItem> foodItems= [];
 
 class FoodItem {
   String foodID;
@@ -19,6 +19,7 @@ class FoodItem {
   });
 
   double get totalItem => (quantity * unitPrice);
+  
   FoodItem.copy(FoodItem from)
       : this(
             foodID: from.foodID,
@@ -27,4 +28,10 @@ class FoodItem {
             unitPrice: from.unitPrice,
             imageName: from.imageName);
 
+}
+
+
+List<FoodItem> addMenu(FoodItem foodItem) {
+  foodItems.add(foodItem);
+  return foodItems;
 }

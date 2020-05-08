@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/Menu/edit_menu.dart';
+import 'package:food_app/constant.dart';
 import 'package:food_app/models/fooditem.dart';
+
+import 'create_menu.dart';
 
 class ViewMenu extends StatefulWidget {
   final List <FoodItem> _foodItems;
@@ -43,7 +46,7 @@ class _ViewMenuState extends State<ViewMenu> {
               setState(() {
                 widget._foodItems.removeAt(index);
                 Scaffold.of(context).showSnackBar(new SnackBar(
-                  content: new Text( widget._foodItems[index].foodName + " was deleted."),
+                  content: new Text("One food is removed."),
                 ));
               });
             },
@@ -101,7 +104,9 @@ class _ViewMenuState extends State<ViewMenu> {
               ),
           itemCount: widget._foodItems.length),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, create_menuRoute); //createMEnu(0) <---error?
+        },
         child: Icon(Icons.add),
         backgroundColor: Colors.deepOrangeAccent,
       ),

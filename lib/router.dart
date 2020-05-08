@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:food_app/Login/login.dart';
 import 'package:food_app/Login/login_page.dart';
 import 'package:food_app/Menu/admin_page.dart';
+import 'package:food_app/Menu/create_menu.dart';
 import 'package:food_app/Menu/view_menu.dart';
+import 'package:food_app/Menu/edit_menu.dart';
 import 'package:food_app/Menu/view_order.dart';
 import 'package:food_app/Settings/help_page.dart';
 import 'package:food_app/Settings/profile_page.dart';
@@ -13,8 +15,6 @@ import 'package:food_app/customer_page.dart';
 import 'package:food_app/food_detail.dart';
 import 'package:food_app/splashscreen.dart';
 import 'package:food_app/models/mockdata.dart';
-
-import 'Menu/edit_menu.dart';
 import 'cart.dart';
 
 Route<dynamic> createRoute(settings) {
@@ -44,6 +44,10 @@ Route<dynamic> createRoute(settings) {
       return MaterialPageRoute(
           settings: RouteSettings(name: edit_menuRoute),
           builder: (context) => EditMenu(arguments));
+    case create_menuRoute:
+      return MaterialPageRoute(
+          settings: RouteSettings(name: create_menuRoute),
+          builder: (context) => CreateMenu(arguments));
     case view_orderRoute:
       return MaterialPageRoute(
           settings: RouteSettings(name: view_orderRoute),
