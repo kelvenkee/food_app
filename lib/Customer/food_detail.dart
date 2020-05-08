@@ -12,7 +12,7 @@ class FoodDetail extends StatefulWidget {
 
 class _FoodDetailState extends State<FoodDetail> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  var _quantity = 1;
+  var _quantity = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -96,11 +96,15 @@ class _FoodDetailState extends State<FoodDetail> {
                 Expanded(
                   child: RaisedButton(
                     onPressed: () {
-                      widget._foodItems.quantity = _quantity;
-                      OrderItem orderItem = new OrderItem(
-                          fooditem: widget._foodItems, quantity: _quantity);
-                      createFood(orderItem);
-                      addedSuccessNotification(context, _scaffoldKey);
+                      if (_quantity == 0) {
+                        _showMyDialog();
+                      } else {
+                        widget._foodItems.quantity = _quantity;
+                        OrderItem orderItem = new OrderItem(
+                            fooditem: widget._foodItems, quantity: _quantity);
+                        createFood(orderItem);
+                        addedSuccessNotification(context, _scaffoldKey);
+                      }
                     },
                     padding: EdgeInsets.symmetric(vertical: 16),
                     color: Colors.deepOrangeAccent,
@@ -155,9 +159,13 @@ class _FoodDetailState extends State<FoodDetail> {
                   color: Colors.black,
                 ),
                 onPressed: () {
-                  setState(() {
-                    _quantity--;
-                  });
+                  if (_quantity == 0) {
+                    null;
+                  } else {
+                    setState(() {
+                      _quantity--;
+                    });
+                  }
                 }),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -178,5 +186,32 @@ class _FoodDetailState extends State<FoodDetail> {
                 }),
           ],
         ));
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Must select a value which is more than or equal to 1'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
