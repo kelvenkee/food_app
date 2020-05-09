@@ -160,7 +160,6 @@ class _FoodDetailState extends State<FoodDetail> {
                 ),
                 onPressed: () {
                   if (_quantity == 0) {
-                    null;
                   } else {
                     setState(() {
                       _quantity--;

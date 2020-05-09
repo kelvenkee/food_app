@@ -23,6 +23,14 @@ String returnTotalAmount(List<OrderItem> orderItems) {
   return totalAmount.toStringAsFixed(2);
 }
 
+String returnTotalFoodQuantity(List<OrderItem> orderItems) {
+  int totalAmount = 0;
+  for (int i = 0; i < orderItems.length; i++) {
+    totalAmount = totalAmount + orderItems[i].quantity;
+  }
+  return totalAmount.toString();
+}
+
 List<OrderItem> addToList(OrderItem orderItem) {
   bool isPresent = false;
 

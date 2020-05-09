@@ -15,59 +15,86 @@ class _CartState extends State<Cart> {
           centerTitle: true,
           title: Text('Orders'),
         ),
-        body: ListView.separated(
-          itemCount: orderItems.length,
-          itemBuilder: (context, index) => ListTile(
-            onTap: () {
-              _showTotal();
-            },
-            onLongPress: () {
-              deleteFood(orderItems[index]);
-            },
-            contentPadding: const EdgeInsets.all(5.0),
-            leading: Container(
-              height: 80.0,
-              width: 80.0,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.asset(orderItems[index].fooditem.imageName,
-                    fit: BoxFit.cover, alignment: Alignment.center),
+        body: Column(
+          children: <Widget>[
+            ListView.separated(
+              shrinkWrap: true,
+              itemCount: orderItems.length,
+              itemBuilder: (context, index) => ListTile(
+                onLongPress: () {
+                  deleteFood(orderItems[index]);
+                },
+                contentPadding: const EdgeInsets.all(5.0),
+                leading: Container(
+                  height: 80.0,
+                  width: 80.0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(orderItems[index].fooditem.imageName,
+                        fit: BoxFit.cover, alignment: Alignment.center),
+                  ),
+                ),
+                title: Text(orderItems[index].fooditem.foodName,
+                    style: TextStyle(
+                        color: Colors.orange[900],
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold)),
+                subtitle: Padding(
+                  padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "x" + orderItems[index].quantity.toString(),
+                          // " Total is :" +
+                          // returnTotalAmount(orderItems),
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 15.0,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ]),
+                ),
+                trailing: Container(
+                  width: 55.0,
+                  child: Text(
+                    // this is the total price for each food , quantity * unit price
+                    'MYR ' +
+                        (orderItems[index]
+                            .fooditem
+                            .totalItem
+                            .toStringAsFixed(2)),
+                  ),
+                ),
+              ),
+              separatorBuilder: (context, index) => Divider(
+                color: Colors.blueGrey,
               ),
             ),
-            title: Text(orderItems[index].fooditem.foodName,
-                style: TextStyle(
-                    color: Colors.orange[900],
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold)),
-            subtitle: Padding(
-              padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "x" + orderItems[index].quantity.toString(),
-                      // " Total is :" +
-                      // returnTotalAmount(orderItems),
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 15.0,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                  ]),
+            Divider(
+              color: Colors.grey,
+              height: 20,
+              thickness: 3,
+              indent: 0,
+              endIndent: 0,
             ),
-            trailing: Container(
-              width: 55.0,
-              child: Text(
-                // this is the total price for each food , quantity * unit price
-                'MYR ' +
-                    (orderItems[index].fooditem.totalItem.toStringAsFixed(2)),
-              ),
+            Text(
+              "Total Quantity: " + returnTotalFoodQuantity(orderItems),
+              textAlign: TextAlign.right,
             ),
-          ),
-          separatorBuilder: (context, index) => Divider(
-            color: Colors.blueGrey,
-          ),
+            Text(
+              "Total Price: MYR" + returnTotalAmount(orderItems),
+              textAlign: TextAlign.right,
+            ),
+            Divider(
+              color: Colors.grey,
+              height: 20,
+              thickness: 3,
+              indent: 0,
+              endIndent: 0,
+            ),
+          ],
         ),
         floatingActionButton: Stack(
           children: <Widget>[

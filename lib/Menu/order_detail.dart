@@ -19,7 +19,7 @@ class _OrderDetail extends State<OrderDetail> {
           backgroundColor: Colors.deepOrangeAccent,
           centerTitle: true,
           title:
-              Text("Order Detail for Order " + (widget._index).toString()),
+              Text("Order Detail for Order " + (widget._index + 1).toString()),
         ),
         body: Column(
           children: <Widget>[
@@ -123,12 +123,11 @@ class _OrderDetail extends State<OrderDetail> {
               "Status: " + widget._order.orderStatus,
               textAlign: TextAlign.right,
               style: TextStyle(
-                color: widget._order.orderStatus == "Completed"
-                    ? Colors.red[800]
-                    : Colors.green[500],
-                fontSize: 13.0,
-                fontWeight: FontWeight.bold
-              ),
+                  color: widget._order.orderStatus == "Completed"
+                      ? Colors.red[800]
+                      : Colors.green[500],
+                  fontSize: 13.0,
+                  fontWeight: FontWeight.bold),
             ),
             Divider(
               color: Colors.grey,

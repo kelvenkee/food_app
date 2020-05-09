@@ -32,13 +32,6 @@ class _CustomerPageState extends State<CustomerPage> {
               tooltip: 'Checkout',
             ),
           ),
-          // IconButton(
-          //   icon: Icon(Icons.shopping_cart),
-          //   onPressed: () {
-          //     Navigator.pushNamed(context, cartRoute);
-          //   },
-          //   tooltip: 'Checkout',
-          // )
         ],
       ),
       body: ListView.separated(
