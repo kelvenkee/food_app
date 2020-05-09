@@ -16,7 +16,7 @@ void _navigate(_order,_index) async {
     final Order returnData = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => OrderDetail(Order.copy(_order), _index + 1)
+        builder: (context) => OrderDetail(Order.copy(_order))
       ),
     );
 

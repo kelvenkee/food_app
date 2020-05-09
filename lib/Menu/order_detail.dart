@@ -5,8 +5,8 @@ import '../models/orderitem.dart';
 
 class OrderDetail extends StatefulWidget {
   final Order _order;
-  final int _index;
-  OrderDetail(this._order, this._index);
+  
+  OrderDetail(this._order);
   @override
   _OrderDetail createState() => _OrderDetail();
 }
@@ -19,7 +19,7 @@ class _OrderDetail extends State<OrderDetail> {
           backgroundColor: Colors.deepOrangeAccent,
           centerTitle: true,
           title:
-              Text("Order Detail for Order " + (widget._index + 1).toString()),
+              Text("Order Detail for Order " + (widget._order.orderID).toString()),
         ),
         body: Column(
           children: <Widget>[

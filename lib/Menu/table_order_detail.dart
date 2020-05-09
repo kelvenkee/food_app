@@ -6,8 +6,8 @@ import '../models/orderitem.dart';
 
 class TableOrderDetail extends StatefulWidget {
   final DiningTable _table;
-  final int _index;
-  TableOrderDetail(this._table, this._index);
+  
+  TableOrderDetail(this._table);
   @override
   _TableOrderDetailState createState() => _TableOrderDetailState();
 }
@@ -19,7 +19,7 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
       appBar: AppBar(
         backgroundColor: Colors.deepOrangeAccent,
         centerTitle: true,
-        title: appBarTitle(),
+         title: appBarTitle(),
       ),
       body: buildTableListview(),
       floatingActionButton: actionbutton(),
@@ -261,13 +261,13 @@ class _TableOrderDetailState extends State<TableOrderDetail> {
     if (widget._table.tableStatus == "Occupied") {
       return Text(
         "Table " +
-            widget._index.toString() +
+            widget._table.diningTableid.toString() +
             "\nOrder #" +
             widget._table.order.orderID.toString(),
         textAlign: TextAlign.center,
       );
     } else {
-      return Text("Table " + widget._index.toString());
+      return Text("Table " + widget._table.diningTableid.toString());
     }
   }
 }

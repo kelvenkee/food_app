@@ -109,6 +109,11 @@ List<Customer> mockCustomer = [
       lastname: "Kee",
       email: "kelven@gmail.com",
       phone: "017-4568596"),
+  Customer(
+      firstname: "John",
+      lastname: "Tan",
+      email: "johnn@gmail.com",
+      phone: "011-58697495"),
 ];
 
 List<Order> mockOrder = [
@@ -117,31 +122,37 @@ List<Order> mockOrder = [
       type: "Dine In",
       customer: mockCustomer[0],
       orderStatus: "In Process",
-      orderID: 1),
+      orderID: 1,),
   Order(
       items: mockOrderItem1,
       type: "Dine In",
       customer: mockCustomer[1],
       orderStatus: "In Process",
-      orderID:2),
+      orderID: 2),
   Order(
       items: mockOrderItem2,
       type: "Dine In",
       customer: mockCustomer[3],
       orderStatus: "Completed",
-      orderID:3),
+      orderID: 3),
   Order(
       items: mockOrderItem3,
       type: "Take Away",
       customer: mockCustomer[2],
       orderStatus: "Completed",
-      orderID:4),
+      orderID: 4),
   Order(
       items: mockOrderItem4,
       type: "Take Away",
       customer: mockCustomer[3],
       orderStatus: "In Process",
-      orderID:5),
+      orderID: 5),
+  Order(
+      items: mockOrderItem5,
+      type: "Dine In",
+      customer: mockCustomer[4],
+      orderStatus: "In Process",
+      orderID: 6),
 ];
 
 List<OrderItem> mockOrderItem0 = [
@@ -171,36 +182,47 @@ List<OrderItem> mockOrderItem4 = [
   OrderItem(fooditem: mockFoodItem[5], quantity: 1),
   OrderItem(fooditem: mockFoodItem[7], quantity: 1),
 ];
+List<OrderItem> mockOrderItem5 = [
+  OrderItem(fooditem: mockFoodItem[8], quantity: 2),
+  OrderItem(fooditem: mockFoodItem[7], quantity: 1),
+  OrderItem(fooditem: mockFoodItem[4], quantity: 1),
+];
 
 List<DiningTable> mockTable = [
   DiningTable(
       order: mockOrder[0],
       customer: mockCustomer[0],
       tableStatus: "Occupied",
-      tableImageName: "assets/table_red.png"),
+      tableImageName: "assets/table_red.png",
+      diningTableid: 1),
   DiningTable(
       order: mockOrder[1],
       customer: mockCustomer[1],
       tableStatus: "Occupied",
-      tableImageName: "assets/table_red.png"),
+      tableImageName: "assets/table_red.png",
+      diningTableid: 2),
   DiningTable(
       order: null,
       customer: null,
       tableStatus: "Empty",
-      tableImageName: "assets/table_green.png"),
+      tableImageName: "assets/table_green.png",
+      diningTableid: 3),
+  DiningTable(
+      order: mockOrder[5],
+      customer: mockCustomer[4],
+      tableStatus: "Occupied",
+      tableImageName: "assets/table_red.png",
+      diningTableid: 4),
   DiningTable(
       order: null,
       customer: null,
       tableStatus: "Empty",
-      tableImageName: "assets/table_green.png"),
+      tableImageName: "assets/table_green.png",
+      diningTableid: 5),
   DiningTable(
       order: null,
       customer: null,
       tableStatus: "Cleaning",
-      tableImageName: "assets/table_yellow.png"),
-  DiningTable(
-      order: null,
-      customer: null,
-      tableStatus: "Empty",
-      tableImageName: "assets/table_green.png"),
+      tableImageName: "assets/table_yellow.png",
+      diningTableid: 6),
 ];

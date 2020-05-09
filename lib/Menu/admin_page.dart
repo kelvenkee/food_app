@@ -229,7 +229,7 @@ class _TableItemsState extends State<TableItems> {
       context,
       MaterialPageRoute(
           builder: (context) => TableOrderDetail(
-              DiningTable.copy(mockTable[widget._index]), widget._index + 1)),
+              DiningTable.copy(mockTable[widget._index]))),
     );
 
     if (returnData != null) {
