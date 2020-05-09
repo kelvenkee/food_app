@@ -19,7 +19,7 @@ class _OrderDetail extends State<OrderDetail> {
           backgroundColor: Colors.deepOrangeAccent,
           centerTitle: true,
           title:
-              Text("Order Detail for Order " + (widget._index + 1).toString()),
+              Text("Order Detail for Order " + (widget._index).toString()),
         ),
         body: Column(
           children: <Widget>[
