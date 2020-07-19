@@ -22,7 +22,6 @@ async function setupDatabase(req, res, next) {
             imageName: 'assets/fooditemsimage/fooditemsimage2.jpg'
         },
         {
-            foodID: '3',
             foodName: "Fish Fillet Burger",
             foodDescription:
                 "A classic favourite of a fish burger served with tartar sauce and cheddar cheese in a steamed bun.",
@@ -87,6 +86,84 @@ async function setupDatabase(req, res, next) {
         { firstname: "Lit Kwong", lastname: "Wong", phone: "019-8865423" },
         { firstname: "Kelven", lastname: "Kee", phone: "017-4568596" },
         { firstname: "John", lastname: "Tan", phone: "011-58697495" },
+    ]);
+
+    addDocuments("user", [
+        { userid: "admin1", password: "admin1" },
+        { userid: "admin2", password: "admin2" },
+    ]);
+
+    addDocuments("order", [
+        {
+            items: 0,
+            type: "Dine In",
+            customer: 0,
+            orderStatus: "In Process",
+        }, {
+            items: 1,
+            type: "Dine In",
+            customer: 1,
+            orderStatus: "In Process",
+        }, {
+            items: 2,
+            type: "Dine In",
+            customer: 3,
+            orderStatus: "Completed",
+        }, {
+            items: 3,
+            type: "Take Away",
+            customer: 2,
+            orderStatus: "Completed",
+        }, {
+            items: 4,
+            type: "Take Away",
+            customer: 3,
+            orderStatus: "In Process",
+        }, {
+            items: 5,
+            type: "Dine In",
+            customer: 4,
+            orderStatus: "In Process",
+        }
+    ]);
+    addDocuments("diningtable", [
+        {
+            order: mockOrder[0],
+            customer: mockCustomer[0],
+            tableStatus: "Occupied",
+            tableImageName: "assets/table_red.png",
+        },
+        {
+            order: mockOrder[1],
+            customer: mockCustomer[1],
+            tableStatus: "Occupied",
+            tableImageName: "assets/table_red.png",
+        },
+        {
+            order: null,
+            customer: null,
+            tableStatus: "Empty",
+            tableImageName: "assets/table_green.png",
+        },
+        {
+            oder: mockOrder[5],
+            customer: mockCustomer[4],
+            tableStatus: "Occupied",
+            tableImageName: "assets/table_red.png",
+        },
+        {
+            order: null,
+            customer: null,
+            tableStatus: "Empty",
+            tableImageName: "assets/table_green.png",
+        },
+        {
+            order: null,
+            cusomer: null,
+            tableStatus: "Cleaning",
+            tableImageName: "assets/table_yellow.png",
+        }
+
     ]);
 
     res.send('Setting Up Database.... Done ')
