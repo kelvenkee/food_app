@@ -93,9 +93,7 @@ async function setupDatabase(req, res, next) {
         { userid: "admin2", password: "admin2" },
     ]);
 
-
-
-    res.send('Setting Up Database.... Done ');
+    res.send('Setting Up Database.... Done ')
 }
 
 async function deleteCollection(collection) {
