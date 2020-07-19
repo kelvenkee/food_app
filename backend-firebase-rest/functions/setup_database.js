@@ -93,80 +93,9 @@ async function setupDatabase(req, res, next) {
         { userid: "admin2", password: "admin2" },
     ]);
 
-    addDocuments("order", [
-        {
-            items: 0,
-            type: "Dine In",
-            customer: 0,
-            orderStatus: "In Process",
-        }, {
-            items: 1,
-            type: "Dine In",
-            customer: 1,
-            orderStatus: "In Process",
-        }, {
-            items: 2,
-            type: "Dine In",
-            customer: 3,
-            orderStatus: "Completed",
-        }, {
-            items: 3,
-            type: "Take Away",
-            customer: 2,
-            orderStatus: "Completed",
-        }, {
-            items: 4,
-            type: "Take Away",
-            customer: 3,
-            orderStatus: "In Process",
-        }, {
-            items: 5,
-            type: "Dine In",
-            customer: 4,
-            orderStatus: "In Process",
-        }
-    ]);
-    addDocuments("diningtable", [
-        {
-            order: mockOrder[0],
-            customer: mockCustomer[0],
-            tableStatus: "Occupied",
-            tableImageName: "assets/table_red.png",
-        },
-        {
-            order: mockOrder[1],
-            customer: mockCustomer[1],
-            tableStatus: "Occupied",
-            tableImageName: "assets/table_red.png",
-        },
-        {
-            order: null,
-            customer: null,
-            tableStatus: "Empty",
-            tableImageName: "assets/table_green.png",
-        },
-        {
-            oder: mockOrder[5],
-            customer: mockCustomer[4],
-            tableStatus: "Occupied",
-            tableImageName: "assets/table_red.png",
-        },
-        {
-            order: null,
-            customer: null,
-            tableStatus: "Empty",
-            tableImageName: "assets/table_green.png",
-        },
-        {
-            order: null,
-            cusomer: null,
-            tableStatus: "Cleaning",
-            tableImageName: "assets/table_yellow.png",
-        }
 
-    ]);
 
-    res.send('Setting Up Database.... Done ')
+    res.send('Setting Up Database.... Done ');
 }
 
 async function deleteCollection(collection) {
