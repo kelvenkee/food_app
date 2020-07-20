@@ -35,7 +35,7 @@ Route<dynamic> createRoute(settings) {
     case admin_pageRoute:
       return MaterialPageRoute(
           settings: RouteSettings(name: admin_pageRoute),
-          builder: (context) => AdminPage());
+          builder: (context) => AdminPage(user: arguments));
     case view_menuRoute:
       return MaterialPageRoute(
           settings: RouteSettings(name: view_menuRoute),

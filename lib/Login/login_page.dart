@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../constant.dart';
 
@@ -8,8 +9,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final _username = TextEditingController();
-  final _password = TextEditingController();
+  String _email;
+  String _password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,34 +91,28 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  Future<void> signIn() async {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+
+      try {
+        FirebaseUser user = (await FirebaseAuth.instance
+                .signInWithEmailAndPassword(email: _email, password: _password))
+            .user;
+        Navigator.pushNamed(context, admin_pageRoute, arguments: user);
+      } catch (e) {
+        print(e.message);
+      }
+    }
+  }
+
   ButtonTheme validator(BuildContext context) {
     return ButtonTheme(
       height: 50,
       buttonColor: Colors.redAccent[400],
       disabledColor: Colors.deepOrangeAccent,
       child: RaisedButton(
-        onPressed: () {
-          if (_formKey.currentState.validate()) {
-            bool result = _performLogin();
-
-            if (result) {
-              print("login success");
-              Navigator.pushNamed(
-                context,
-                admin_pageRoute,
-              );
-            } else {
-              Scaffold.of(context).showSnackBar(new SnackBar(
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-                content: new Text(
-                  'Invalid Username & Password',
-                  style: TextStyle(color: Colors.red),
-                ),
-              ));
-            }
-          }
-        },
+        onPressed: signIn,
         child:
             Text('Login', style: TextStyle(fontSize: 20, color: Colors.white)),
       ),
@@ -126,7 +121,6 @@ class _LoginPageState extends State<LoginPage> {
 
   TextFormField password() {
     return TextFormField(
-      controller: _password,
       obscureText: true,
       decoration: InputDecoration(
         labelText: "Password",
@@ -135,16 +129,16 @@ class _LoginPageState extends State<LoginPage> {
       ),
       validator: (value) {
         if (value.isEmpty) {
-          return 'Please Enter Password';
+          return 'Please Enter Email';
         }
         return null;
       },
+      onSaved: (newValue) => _password = newValue,
     );
   }
 
   TextFormField username() {
     return TextFormField(
-      controller: _username,
       decoration: InputDecoration(
         labelText: "Username",
         labelStyle: TextStyle(fontSize: 20),
@@ -156,16 +150,17 @@ class _LoginPageState extends State<LoginPage> {
         }
         return null;
       },
+      onSaved: (newValue) => _email = newValue,
     );
   }
 
-  bool _performLogin() {
-    String username = _username.text;
-    String password = _password.text;
+  // bool _performLogin() {
+  //   String username = _username.text;
+  //   String password = _password.text;
 
-    if (username == "admin" && password == "root") {
-      return true;
-    } else
-      return false;
-  }
+  //   if (username == "admin" && password == "root") {
+  //     return true;
+  //   } else
+  //     return false;
+  // }
 }

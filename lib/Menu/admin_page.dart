@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/constant.dart';
 import 'package:carousel_pro/carousel_pro.dart';
@@ -7,7 +8,15 @@ import 'package:food_app/models/mockdata.dart';
 import '../models/mockdata.dart';
 import 'table_order_detail.dart';
 
-class AdminPage extends StatelessWidget {
+class AdminPage extends StatefulWidget {
+  final FirebaseUser user;
+
+  const AdminPage({Key key, this.user}) : super(key: key);
+  @override
+  _AdminPageState createState() => _AdminPageState();
+}
+
+class _AdminPageState extends State<AdminPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -24,7 +33,7 @@ class AdminPage extends StatelessWidget {
           UserAccountsDrawerHeader(
             accountName: Text('Kang Wei Kiat',
                 style: TextStyle(fontSize: 22.0, color: Colors.white)),
-            accountEmail: Text('TeamCoconut@gmail.com'),
+            accountEmail: Text('${widget.user.email}'),
             currentAccountPicture: GestureDetector(
                 child: CircleAvatar(
               backgroundColor: Colors.white,
@@ -227,8 +236,8 @@ class _TableItemsState extends State<TableItems> {
     final DiningTable returnData = await Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => TableOrderDetail(
-              DiningTable.copy(mockTable[widget._index]))),
+          builder: (context) =>
+              TableOrderDetail(DiningTable.copy(mockTable[widget._index]))),
     );
 
     if (returnData != null) {
