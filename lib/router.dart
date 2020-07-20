@@ -39,7 +39,7 @@ Route<dynamic> createRoute(settings) {
     case view_menuRoute:
       return MaterialPageRoute(
           settings: RouteSettings(name: view_menuRoute),
-          builder: (context) => ViewMenu(arguments));
+          builder: (context) => ViewMenu());
     case edit_menuRoute:
       return MaterialPageRoute(
           settings: RouteSettings(name: edit_menuRoute),

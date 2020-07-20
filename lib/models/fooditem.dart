@@ -28,6 +28,20 @@ class FoodItem {
             unitPrice: from.unitPrice,
             imageName: from.imageName);
 
+
+  FoodItem.fromJson(Map<String, dynamic> json)
+      : this(
+            foodID: json['foodID'].toString(),
+            foodName: json['foodName'],
+            foodDescription: json['foodDescription'],
+            unitPrice: json['unitPrice'],
+            imageName: json['imageName']
+            );
+
+  Map<String, dynamic> toJson() =>
+      {'foodID': foodID, 'foodName': foodName, 'foodDescription': foodDescription, 'unitPrice': unitPrice, 'imageName': imageName};
+  
+
 }
 
 

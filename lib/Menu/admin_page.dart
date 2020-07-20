@@ -120,8 +120,7 @@ class AdminPage extends StatelessWidget {
                   ],
                 ),
                 onTap: () {
-                  Navigator.pushNamed(context, view_menuRoute,
-                      arguments: mockFoodItem);
+                  Navigator.pushNamed(context, view_menuRoute);
                 },
               )),
           Divider(

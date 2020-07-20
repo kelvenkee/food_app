@@ -1,0 +1,30 @@
+@baseUrl = https://us-central1-coconut-backend-food-app.cloudfunctions.net/api
+
+### Getting the list of fooditem
+GET {{baseUrl}}/fooditem 
+
+
+###  Getting a fooditem of given id
+GET {{baseUrl}}/fooditem/07I7JfmBMf7aPwi9Ssjq
+
+### Update the price of a given food 
+PATCH {{baseUrl}}/fooditem/1rIA5mjQXNUJp4mORon5
+Content-Type: application/json
+
+{
+    "unitPrice": 28
+}
+
+###  Create a new fooditem
+POST {{baseUrl}}/fooditem
+Content-Type: application/json
+
+{
+     "foodDescription": "New description",
+     "foodName" : "New food name",
+     "imageName": "assets/fooditemsimage/fooditemsimage1.jpg",
+     "unitPrice" : 11.5
+}
+
+### Deleting a given fooditem
+DELETE {{baseUrl}}/fooditem/ztPtlHdQC7awgtBfpZDC
