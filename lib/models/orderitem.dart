@@ -36,7 +36,7 @@ List<OrderItem> addToList(OrderItem orderItem) {
 
   if (orderItems.length > 0) {
     for (int i = 0; i < orderItems.length; i++) {
-      if (orderItems[i].fooditem.foodID == orderItem.fooditem.foodID) {
+      if (orderItems[i].fooditem.id == orderItem.fooditem.id) {
         increaseItemQuantity(orderItems[i], orderItem);
         isPresent = true;
         break;

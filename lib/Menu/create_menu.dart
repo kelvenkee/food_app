@@ -122,9 +122,9 @@ class _CreateMenuState extends State<CreateMenu> {
                   icon: Icon(Icons.check_circle),
                   label: Text("Save"),
                   onPressed: () {
-                    String foodId = getId(mockFoodItem[mockFoodItem.length - 1].foodID);
+                    String id = getId(mockFoodItem[mockFoodItem.length - 1].id);
                     FoodItem newFood = new FoodItem(
-                        foodID: foodId,
+                        id: id,
                         foodName: foodName,
                         foodDescription: foodDescription,
                         unitPrice: unitPrice,
