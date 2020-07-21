@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/models/fooditem.dart';
 import 'package:food_app/models/mockdata.dart';
+import 'package:food_app/service/fooditem_data_service.dart';
+import '../constant.dart';
+
 // import 'package:image_picker/image_picker.dart';
 // import 'dart:io';
 class CreateMenu extends StatefulWidget {
@@ -11,11 +14,13 @@ class CreateMenu extends StatefulWidget {
 }
 
 class _CreateMenuState extends State<CreateMenu> {
+  FoodItem _fooditems;
+  final dataService = FoodItemDataService();
   String foodName;
   String foodDescription;
   double unitPrice;
   String imageName;
-
+  String id;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -121,16 +126,29 @@ class _CreateMenuState extends State<CreateMenu> {
                   heroTag: null,
                   icon: Icon(Icons.check_circle),
                   label: Text("Save"),
-                  onPressed: () {
-                    String id = getId(mockFoodItem[mockFoodItem.length - 1].id);
-                    FoodItem newFood = new FoodItem(
-                        id: id,
-                        foodName: foodName,
-                        foodDescription: foodDescription,
-                        unitPrice: unitPrice,
-                        imageName: "assets/sample_image2.png");
-                    mockFoodItem.add(newFood);
-                    Navigator.pop(context);
+                  onPressed: () async{
+                      await dataService.createFoodItem(
+                          FoodItem(
+                          foodName: foodName,
+                          foodDescription: foodDescription, 
+                          unitPrice: unitPrice, 
+                          imageName: "assets/sample_image2.png",
+                          id: id
+                          )
+                      );
+                    // _fooditems= new FoodItem(foodName: foodName, foodDescription: foodDescription, unitPrice: unitPrice, imageName: "assets/sample_image2.png", id: id );
+                    
+                    // dataService.createFoodItem(_fooditems);            
+                    Navigator.popUntil(context, ModalRoute.withName(admin_pageRoute));
+                    // String id = getId(mockFoodItem[mockFoodItem.length - 1].id);
+                    // FoodItem newFood = new FoodItem(
+                    //     id: id,
+                    //     foodName: foodName,
+                    //     foodDescription: foodDescription,
+                    //     unitPrice: unitPrice,
+                    //     imageName: "assets/sample_image2.png");
+                    // mockFoodItem.add(newFood);
+                    // Navigator.pop(context);
                   },
                   backgroundColor: Colors.deepOrangeAccent,
                 ),

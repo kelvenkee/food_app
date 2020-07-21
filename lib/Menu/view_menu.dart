@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:food_app/Menu/edit_menu.dart';
+import 'package:food_app/Menu/edit_menu.dart';
 import 'package:food_app/constant.dart';
 import 'package:food_app/models/fooditem.dart';
 import 'package:food_app/service/fooditem_data_service.dart';
+
 
 
 
@@ -17,21 +18,21 @@ class _ViewMenuState extends State<ViewMenu> {
   List<FoodItem> _fooditems;
   final dataService = FoodItemDataService();
 
-  // void _navigate(int index) async{
-  //   FoodItem returnData= await Navigator.push(
-  //     context, 
-  //     MaterialPageRoute(
-  //       builder: (context)=>
-  //         EditMenu(FoodItem.copy(widget._foodItems[index])),
-  //       ),
-  //   );
-  //   if(returnData != null){
-  //     //update data in the view menu screen
-  //     //rebuild the screen (setState)
-  //     setState(() => widget._foodItems[index]= returnData);
-  //   }
+  void _navigate(int index) async{
+    FoodItem returnData= await Navigator.push(
+      context, 
+      MaterialPageRoute(
+        builder: (context)=>
+          EditMenu(_fooditems[index].id),
+        ),
+    );
+    if(returnData != null){
+      //update data in the view menu screen
+      //rebuild the screen (setState)
+      setState(() => _fooditems[index]= returnData);
+    }
 
-  // }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +135,9 @@ class _ViewMenuState extends State<ViewMenu> {
       body: ListView.separated(
           itemBuilder: (context, index) => Dismissible( //DELETE BY SWIPPING 
             key: UniqueKey(), 
-            onDismissed: (direction){
+            onDismissed: (direction) async{
+              await dataService.deleteFoodItem(_fooditems[index].id);
+
               setState(() {
                 _fooditems.removeAt(index);
                 Scaffold.of(context).showSnackBar(new SnackBar(
@@ -188,7 +191,7 @@ class _ViewMenuState extends State<ViewMenu> {
                           fit: BoxFit.cover, alignment: Alignment.center),
                     ),
                   ),
-                  // onTap: () => _navigate(index),
+                  onTap: () => _navigate(index),
                 ),
           ),
           separatorBuilder: (context, index) => Divider(

@@ -21,7 +21,7 @@ class RestService {
     throw response;
   }
 
-  Future post(String endpoint, {dynamic data}) async {
+  Future post(String endpoint, dynamic data) async {
     final response = await http.post('$baseUrl/$endpoint',
         headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));
 
@@ -31,7 +31,7 @@ class RestService {
     throw response;
   }
 
-  Future patch(String endpoint, {dynamic data}) async {
+  Future patch(String endpoint, dynamic data) async {
     final response = await http.patch('$baseUrl/$endpoint',
         headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));
 
@@ -40,7 +40,7 @@ class RestService {
     }
     throw response;
   }
-
+  
   Future delete(String endpoint) async {
     final response = await http.delete('$baseUrl/$endpoint');
 
