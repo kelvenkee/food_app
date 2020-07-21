@@ -4,7 +4,6 @@ import 'package:food_app/constant.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:food_app/models/diningtable.dart';
 import 'package:food_app/models/mockdata.dart';
-
 import '../models/mockdata.dart';
 import 'table_order_detail.dart';
 

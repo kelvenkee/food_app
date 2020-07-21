@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/models/fooditem.dart';
-import 'package:food_app/models/mockdata.dart';
 import 'package:food_app/service/fooditem_data_service.dart';
 import '../constant.dart';
 
-// import 'package:image_picker/image_picker.dart';
-// import 'dart:io';
 class CreateMenu extends StatefulWidget {
   CreateMenu();
   @override
@@ -14,7 +11,6 @@ class CreateMenu extends StatefulWidget {
 }
 
 class _CreateMenuState extends State<CreateMenu> {
-  FoodItem _fooditems;
   final dataService = FoodItemDataService();
   String foodName;
   String foodDescription;
@@ -136,19 +132,8 @@ class _CreateMenuState extends State<CreateMenu> {
                           id: id
                           )
                       );
-                    // _fooditems= new FoodItem(foodName: foodName, foodDescription: foodDescription, unitPrice: unitPrice, imageName: "assets/sample_image2.png", id: id );
-                    
-                    // dataService.createFoodItem(_fooditems);            
+  
                     Navigator.popUntil(context, ModalRoute.withName(admin_pageRoute));
-                    // String id = getId(mockFoodItem[mockFoodItem.length - 1].id);
-                    // FoodItem newFood = new FoodItem(
-                    //     id: id,
-                    //     foodName: foodName,
-                    //     foodDescription: foodDescription,
-                    //     unitPrice: unitPrice,
-                    //     imageName: "assets/sample_image2.png");
-                    // mockFoodItem.add(newFood);
-                    // Navigator.pop(context);
                   },
                   backgroundColor: Colors.deepOrangeAccent,
                 ),

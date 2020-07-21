@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ### Deleting a given fooditem
-DELETE {{baseUrl}}/fooditem/ztPtlHdQC7awgtBfpZDC
+DELETE {{baseUrl}}/fooditem/zMJpHTo4pwPoOgJ5OYQR
