@@ -71,7 +71,7 @@ Route<dynamic> createRoute(settings) {
     case customerPageRoute:
       return MaterialPageRoute(
           settings: RouteSettings(name: customerPageRoute),
-          builder: (context) => CustomerPage(mockFoodItem));
+          builder: (context) => CustomerPage());
     case food_detailRoute:
       return MaterialPageRoute(
           settings: RouteSettings(name: food_detailRoute),

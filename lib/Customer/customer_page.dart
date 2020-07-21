@@ -2,18 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:food_app/constant.dart';
 import 'package:badges/badges.dart';
 import 'package:food_app/models/orderitem.dart';
+import 'package:food_app/service/fooditem_data_service.dart';
+
+import '../models/fooditem.dart';
+import '../service/fooditem_data_service.dart';
 
 class CustomerPage extends StatefulWidget {
-  final List _foodItems;
 
-  CustomerPage(this._foodItems);
   @override
   _CustomerPageState createState() => _CustomerPageState();
 }
 
 class _CustomerPageState extends State<CustomerPage> {
+  List<FoodItem> _foodItems;
+  final dataService = FoodItemDataService();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   Widget build(BuildContext context) {
+    return FutureBuilder<List<FoodItem>>(
+        future: dataService.getAllFoodItem(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            _foodItems = snapshot.data;
+            return _buildMainScreen();
+          }
+          return _buildFetchingDataScreen();
+        });
+  }
+
+  Scaffold _buildMainScreen() {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -37,7 +53,7 @@ class _CustomerPageState extends State<CustomerPage> {
       body: ListView.separated(
           itemBuilder: (context, index) => ListTile(
                 contentPadding: const EdgeInsets.all(5.0),
-                title: Text(widget._foodItems[index].foodName,
+                title: Text(_foodItems[index].foodName,
                     style: TextStyle(
                         color: Colors.orange[900],
                         fontSize: 18.0,
@@ -49,8 +65,7 @@ class _CustomerPageState extends State<CustomerPage> {
                       children: <Widget>[
                         Text(
                           "Price: RM" +
-                              widget._foodItems[index].unitPrice
-                                  .toStringAsFixed(2),
+                              _foodItems[index].unitPrice.toStringAsFixed(2),
                           style: TextStyle(
                             color: Colors.black54,
                             fontSize: 18.0,
@@ -58,7 +73,7 @@ class _CustomerPageState extends State<CustomerPage> {
                           textAlign: TextAlign.justify,
                         ),
                         Text(
-                          widget._foodItems[index].foodDescription,
+                          _foodItems[index].foodDescription,
                           style: TextStyle(
                             color: Colors.black54,
                             fontSize: 13.0,
@@ -72,7 +87,7 @@ class _CustomerPageState extends State<CustomerPage> {
                   width: 80.0,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset(widget._foodItems[index].imageName,
+                    child: Image.asset(_foodItems[index].imageName,
                         fit: BoxFit.cover, alignment: Alignment.center),
                   ),
                 ),
@@ -80,14 +95,29 @@ class _CustomerPageState extends State<CustomerPage> {
                   Navigator.pushNamed(
                     context,
                     food_detailRoute,
-                    arguments: widget._foodItems[index],
+                    arguments: _foodItems[index],
                   );
                 },
               ),
           separatorBuilder: (context, index) => Divider(
                 color: Colors.blueGrey,
               ),
-          itemCount: widget._foodItems.length),
+          itemCount: _foodItems.length),
+    );
+  }
+
+  Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching food item data....Please wait'),
+          ],
+        ),
+      ),
     );
   }
 }
