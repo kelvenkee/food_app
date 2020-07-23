@@ -1,48 +1,39 @@
-# food_app
+Mobile Application Programming, SCSJ3623
+School of Computing, UTM
+June 2020
 
-Project Title: Food Ordering Application
+# Group Project Final Version
 
-Group Members :
-1.  Kang Wei Kiat
-2.  Kee Kelven
-3.  Wong Sing Hua
-4.  Wong Lit Kwong
+## Project Title: Food Ordering Application
 
-Video Url : https://youtu.be/jnTyTILE_Dg
+## Project Synopsis:
 
-Screen Name and Purpose of the screen
+................................................................................................................
 
-Customer
-cart.dart - To display customer ordered food item, and to display total amount food ordered beform confirm
+_Note: Briefly describe what your app is all about_
 
-customer_page.dart - To allow customer to view and select food menu   
+## Group Members
+- Name 1: KANG WEI KIAT
+- Name 2: KEE KELVEN
+- Name 3: WONG SING HUA
+- Name 4: WONG LIT KWONG
 
-food_detail.dart - Customer able to view food details after selecting particular food from customer_page.dart
+## Video URL: ........................
 
-Login
-login_page.dart - To allow employee login
+_Note:_
 
-login.dart - To allow user to select either customer or employee
+- Video must be uploaded to youtube.
+- Provide timestamps to your video.
 
-Menu
-admin_page.dart - Employee main dashboard to navigate to other pages
+## REST API URL/Project URL on Firebase: https://us-central1-coconut-backend-food-app.cloudfunctions.net/api 
 
-view_menu dart- Allow employee to view complete food menu 
+## Git Repo URL on GitHub (front-end): ........................
 
-create_menu.dart- Create menu page whereby employee are able to create food menu
+## Git Repo URL on GitHub (back-end) : ........................
 
-edit_menu.dart- Edit menu page whereby employee are able to edit menu
-
-view_order.dart - To allow employee to view food order from customer
-
-order_detail.dart- To allow employee to view the detailed order of the customer from view_order.dart
-
-table_order_detail.dart - To allow employee to view the detailed table order
-
-
-Settings
-profile_page.dart - To allow employee to edit the profile
-
-setting_password.dart - To allow employee to edit the passwords.
-
+## User credential (username and passwords) to test out your app:
+1. user's credential: N/A
+2. admin's credential 
+Username: kangweikiat@gmail.com
+Password: kangweikiat
 
